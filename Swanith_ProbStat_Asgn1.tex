@@ -1,0 +1,410 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{amsmath} % for the matrix environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+% Margins
+\topmargin=-0.90in%-0.45%
+\evensidemargin=0in%0in%
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.5in
+\onehalfspacing
+
+\title{Prob-Stats Assignment - 1}
+\author{\textbf{\Large Swanith Upadhye}}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\Large
+	
+\section*{\color{teal} Question 1 - Urns and Balls}
+
+	\subsection*{Red and Black Balls be distinguishible among themselves}
+	\subsection*{(a)}
+	
+	Let the red and black balls be distinguishable among themselves:
+	The number of ways(hence probability) I can pick 5 balls of following combinations:\\
+	P(E1 - 5 Red) = 1/\(C^{20}_{5}=1/15504\approxeq 6.4\times10^{-5} \rightarrow 0.00006\)\\
+	P(E2 - 4 Red) = \(\frac{15 \times C^5_4}{C^{20}_5}=25/5168 \approxeq 0.0048\)\\
+	P(E3 - 3 Red) = \(\frac{C^{15}_{2} \times C^5_3}{C^{20}_5}=175/2584 \approxeq 0.0677\)\\
+	P(E4 - 2 Red) = \(\frac{C^{15}_{3} \times C^5_2}{C^{20}_5}=2275/7752\approxeq0.2935\)\\
+	P(E5 -1 Red) = \(\frac{C^{15}_{4} \times C^5_1}{C^{20}_5}=2275/5168 \approxeq 0.4402\)\\
+	P(E6 - 0 Red) = \(\frac{C^{15}_{5}}{C^{20}_5}=1001/5168\approxeq 0.1937\)\\
+	
+	Probability that you pick a red ball given(or after) the above events :\\
+	1. \(P(You\,red|E1)= 0\)\\
+	2. \( P(You\, red|E2) =  1/15\)\\
+	3. \( P(You\, red|E3) =  \frac{2}{15}\)\\
+    4. \( P(You\, red|E4) =  \frac{C^3_1}{15}=1/5\)\\
+    5. \( P(You\, red|E5) =  \frac{C^4_1}{15}=4/15\)\\
+    6. \( P(You\, red|E6) =  \frac{5}{15}=1/3\)\\
+	
+	The above happens because you have to pick 1 out of remaining fifteen balls.
+	    
+	Now the net probability that you pick a red ball is given by:
+	\[
+		P(You\, red) = \Sigma_{j=1}^{6}P(You\,Red|Ej)P(Ej)
+		\approxeq 0.00006\times0 + 0.0048\times1/15 + 0.0667\times2/15 
+	\]
+	\[
+		+ 0.2935 \times 3/15 + 0.4402 \times 4/15 + 0.1937 \times 5/15 \approxeq \boxed{0.25}
+	\]
+    \subsection*{(b)}
+	YR = Event that you picked a Red ball(Event \(\rightarrow\) You Red, as above ).\\
+	Ej = I removed 6-j red balls first (\(1<j<5\))\\
+	Ia = I removed atleast 1 red ball first\\
+	
+	Hence , \(P(Ej|YR) = \frac{P(YR|Ej)P(Ej)}{P(YR)}\dotfill\)(Bayes' Theorem)\\
+	
+	Thus, the probability that I picked atleast 1 red ball out of 5 before, given You picked a red ball at 6th place should be:
+	\[
+	  P(Ia|YR) = \Sigma_{j=1}^5 P(Ej|YR)
+	\]
+	The \( P(Ej|YR)\)s turn out to be:\\
+	1. \(P(E1|YR) = 0\)\\
+	2. \(P(E2|YR) = \frac{1/15 \times 0.0048}{0.25}\approxeq 0.0013\)\\
+	3. \(P(E3|YR) = \frac{2/15 \times 0.0677}{0.25} \approxeq 0.0360 \)\\
+	4.\(P(E4|YR) = \frac{3/15 \times0.2935}{0.25}\approxeq 0.2348 \)\\
+	5.\(P(E5|YR) = \frac{4/15\times 0.4402}{0.25}\approxeq0.4695 \)\\
+	%6. \(P(E6|YR) = (1001/15504)/(819229/1806216) = 820048229/28003572864\)\\
+	
+	Now the Probability \( P(Ia|YR) \) becomes:\\
+	\[
+		P(Ia|YR)= 0 + 0.0013 + 0.0360 + 0.2348 + 0.4695 
+		\approxeq \boxed{0.7416}
+	\]
+	
+	\subsection*{Red and Black balls be indistinguishable among themselves}
+	
+	Let the red and black balls be indistinguishable among themselves:\\
+	The total number of ways I can pick 5 out of 20 balls:\\
+	= (5 red + 0 black) + (4 red + 1 black) + (3 red + 2 black) + (2 red + 3 black) + (1 red + 4 black) + (0 red + 5 black) = 6 ways\\
+	The probability of such combinations:\\
+	E1. 5 Red = 1/6\\
+	E2. 4 Red = 1/6\\
+	E3. 3 Red = 1/6\\
+	E4. 2 Red = 1/6\\
+	E5. 1 Red = 1/6\\
+	E6. 0 Red = 1/6\\
+	
+	Probability that you pick a red ball given(or after) the above events :\\
+	1. \(P(You\,red|E1)= 0\)\\
+	2. \( P(You\, red|E2) =  1/15\)\\
+	3. \( P(You\, red|E3) =  2/15\)\\
+	4. \( P(You\, red|E4) =  3/15\)\\
+	5. \( P(You\, red|E5) =  4/15\)\\
+	6. \( P(You\, red|E6) =  5/15\)\\
+	
+	The above happens because you have to pick 1 out of remaining fifteen balls.
+	
+	Now the net probability that you pick a red ball is given by:
+	\[
+		P(You\, red) = \Sigma_{j=1}^{6}P(You\,Red|Ej)P(Ej) = (0/15 \times 1/6 + 1/15 \times 1/6 + 2/15 \times 1/6 + 3/15 
+	\]
+	\[
+		\times 1/6 + 4/15 \times 1/6 + + 5/15 \times 1/6 = \frac{0+1+2+3+4+5}{15}\times1/6 = \boxed{ 1/6}
+	\]
+	
+	\subsection*{(b)}
+	
+	YR = Event that you picked a Red ball(Event \(\rightarrow\) You Red, as above ).\\
+	Ej = I removed 6-j red balls first (\(1<j<5\))\\
+	Ia = I removed atleast 1 red ball first\\
+	
+	Hence , \(P(Ej|YR) = \frac{P(YR|Ej)P(Ej)}{P(YR)} = P(YR|Ej)\dotfill\)(P(YR) = P(Ej))\\
+	
+	Thus, the probability that I picked atleast 1 red ball out of 5 before, given You picked a red ball at 6th place should be:
+	\[
+	P(Ia|YR) = \Sigma_{j=1}^5 P(Ej|YR) = \Sigma_{i=1}^{5} P(YR|Ej)
+	\]
+	
+	Now the Probability \( P(Ia|YR) \) becomes:\\
+	\[
+	P(Ia|YR)= \frac{0 + 1 + 2 + 3 + 4}{15} 
+	\approxeq \boxed{2/3}
+	\]
+	
+\section*{\color{teal} Question 2 - Forward Backward Detector}
+		
+	\subsection*{(a) Total number(N) of decays is fixed}
+	The number of Forward detection follows a binomial distribution with probability p in its favor. F(m, N,p) = $C^N_m p^m (1-p)^{N-m}$\\
+	The asymmetry quotient, \( r = \frac{F-B}{F+B} = \frac{F-(N-F)}{F+(N-F)} = 2(F/N)-1\) is a random variable linear function of F.\\
+	Asked:
+	\[
+		\langle r \rangle = 2/n \langle F \rangle -1 = 2/N (Np) - 1 = \boxed{2p-1 = \langle r \rangle}
+	\]
+	Also,
+	\[
+		\langle (r - \langle r \rangle)^2 \rangle = \langle (2 F/N - 1 -(2p -1))^2 \rangle = \langle 4(F/N)^2 - 8p(F/N) + 4p^2 \rangle
+	\]
+	\[
+		 = (4/N^2) \langle F^2 \rangle -(8p/N) \langle F \rangle + 4p^2 = (4/N^2) (Npq + N^2p^2) -  (8p/N) (Np) + 4p^2
+	\]\textit{(for Binomially distributed rv x,  $\langle X^2\rangle = \mu^2 +\sigma ^2 = (Np)^2 + Npq$)}
+	\[
+		= 4pq/N + 4p^2 - 8p^2 +4p^2 = \boxed{4pq/N =\sigma^2_r}
+	\]		
+	
+	\subsection*{(b) Number of Decays isn't fixed}
+	
+	If the number of Decays isn't fixed the probability distribution of the number counts within a given time should be given by poisson distribution. Let us assume the parameter of Forward detection poisson is $\lambda_F$, and
+	$\lambda_B$ for the backward one.\\
+	Now under the approximation that $\lambda$s are large numbers such that the poisson distributions are are sharply peaked around the mean.
+	
+	In that case r can be approximated to be linear around its value at the mean, as such:\\
+	\[
+		r(F,B) = \frac{F-B}{F+B}\vline_{F\approxeq \lambda_F, B\approxeq \lambda_B} + (\partial r/\partial F \vline_{F\approxeq \lambda_F, B\approxeq \lambda_B}) \times F
+		+ (\partial r/\partial B \vline_{F\approxeq \lambda_F, B\approxeq \lambda_B}) \times B + O(F^2, B^2)
+	\]
+	Now, 
+	\[
+		\partial r/\partial F = \frac{1}{F+B} - \frac{F-B}{(F+B)^2} 
+		\Rightarrow 	\partial r/\partial F \vline_{F\approxeq \lambda_F, B\approxeq \lambda_B} = \frac{2\times\lambda_B}{(\lambda_B+\lambda_F)^2} = a_{(say)}
+	\]
+	Similarly,
+	\[
+		\partial r/\partial B = \frac{-1}{F+B} - \frac{F-B}{(F+B)^2} 
+		\Rightarrow 	\partial r/\partial F \vline_{F\approxeq \lambda_F, B\approxeq \lambda_B} = \frac{-2\times\lambda_F}{(\lambda_B+\lambda_F)^2} = b_{(say)}
+	\]
+	Hence, \( r \approxeq \frac{\lambda_F-\lambda_B}{\lambda_F + \lambda_B} + a\times F + b \times B + O(F^2,B^2,FB) \)\\
+	
+	In this approximation,\\
+	\[
+		\langle r \rangle = \frac{\lambda_F-\lambda_B}{\lambda_F + \lambda_B} + \cancel{a\langle F \rangle + b \langle B \rangle}
+	\](substituting $\langle F \rangle = \lambda_{F} 
+	; \langle B \rangle = \lambda_B \,in \, \, the \, above$)
+	
+	Also,
+	\[
+		\sigma_r^2 = a^2 \sigma_F^2 + b^2 \sigma_B^2 = \frac{8\lambda_F^2 \lambda_B^2}{(\lambda_F + \lambda_B)^4} 	
+	\]
+	
+	The numerical calculation, distribution of r is found via scipy.stats is attached with the answer sheet. Deviation from above results for small lambdas is seen.
+	
+\section*{\color{teal} Question 3 - Proton-Antiproton}	
+		
+		\section*{Part (a)}
+		
+		Since each proton (\(n_p\)) and each antiproton (\(n_{\bar{p}}\)) are assumed to be created from independent regions of space far from each other, both follow a Poisson distribution. Therefore, the difference in the number of protons and antiprotons follows a Skellam distribution. Specifically:
+		
+		\[
+		n_p - n_{\bar{p}} \sim \text{Skellam}(\lambda_p, \lambda_{\bar{p}})
+		\]
+		
+		where \( \lambda_p \) and \( \lambda_{\bar{p}} \) are the mean numbers of protons and antiprotons, respectively.
+		
+		The cumulants of the Skellam distribution are related to the moments like variance, skewness, and kurtosis as follows:
+			
+		\subsection*{Moment Generating Function (MGF)}
+		The moment generating function \( M_X(t) \) for a random variable \( X \) is defined as:
+		\[
+		M_X(t) = \mathbb{E}[e^{tX}]
+		\]
+		The MGF encodes information about all the moments of \( X \).
+			
+		\subsection*{Cumulant Generating Function (CGF)}
+		The cumulant generating function \( K_X(t) \) for \( X \) is the logarithm of the moment generating function:
+		\[
+		K_X(t) = \log M_X(t) = \log \mathbb{E}[e^{tX}]
+		\]
+		The cumulants \( \kappa_n(X) \) are the coefficients of \( \frac{t^n}{n!} \) in the Taylor expansion of the CGF around \( t = 0 \):
+		\[
+		K_X(t) = \sum_{n=1}^{\infty} \kappa_n(X) \frac{t^n}{n!}
+		\]
+			
+		\subsection*{MGF of Sum of Independent Random Variables}
+		For independent random variables \( X \) and \( Y \), the MGF of their sum \( Z = X + Y \) is the product of their individual MGFs:
+		\[
+		M_Z(t) = M_X(t) M_Y(t)
+		\]
+		This follows from the definition of the MGF:
+		\[
+		M_Z(t) = \mathbb{E}[e^{tZ}] = \mathbb{E}[e^{t(X + Y)}] = \mathbb{E}[e^{tX} e^{tY}]
+		\]
+		Since \( X \) and \( Y \) are independent, \( \mathbb{E}[e^{tX} e^{tY}] = \mathbb{E}[e^{tX}] \mathbb{E}[e^{tY}] \), so:
+		\[
+		M_Z(t) = M_X(t) M_Y(t)
+		\]
+			
+		\subsection*{CGF of the Sum}
+		Taking the logarithm of both sides to get the CGF for \( Z = X + Y \):
+		\[
+		K_Z(t) = \log M_Z(t) = \log(M_X(t) M_Y(t)) = \log M_X(t) + \log M_Y(t)
+		\]
+		Thus, the CGF of the sum of independent random variables is the sum of their individual CGFs:
+		\[
+		K_Z(t) = K_X(t) + K_Y(t)
+		\]
+			
+		\subsection*{Deriving Cumulants}
+		By expanding the CGF in a Taylor series around \( t = 0 \), we have:
+		\[
+		K_Z(t) = \sum_{n=1}^{\infty} \kappa_n(Z) \frac{t^n}{n!}
+		\]
+		\[
+		K_X(t) = \sum_{n=1}^{\infty} \kappa_n(X) \frac{t^n}{n!}, \quad K_Y(t) = \sum_{n=1}^{\infty} \kappa_n(Y) \frac{t^n}{n!}
+		\]
+		Since the CGF for \( Z \) is the sum of the CGFs for \( X \) and \( Y \), the cumulants of \( Z \) are just the sums of the cumulants of \( X \) and \( Y \):
+		\[
+		\kappa_n(Z) = \kappa_n(X) + \kappa_n(Y)
+		\]
+			
+		\subsection*{Difference of Independent Variables}
+		If \( Z = X - Y \), the MGF is:
+		\[
+		M_Z(t) = M_X(t) M_Y(-t)
+		\]
+		Taking the logarithm gives the CGF:
+		\[
+		K_Z(t) = K_X(t) + K_Y(-t)
+		\]
+		Since \( K_Y(-t) \) is the CGF for \( -Y \), which has the same cumulants as \( Y \) but with alternating signs for odd-order cumulants, we have:
+		\[
+		\kappa_n(Z) = \kappa_n(X) + (-1)^n \kappa_n(Y)
+		\]
+		This means:
+		- For even cumulants, \( \kappa_n(Z) = \kappa_n(X) + \kappa_n(Y) \),
+		- For odd cumulants, \( \kappa_n(Z) = \kappa_n(X) - \kappa_n(Y) \).
+		
+		\section*{Hence For Skellam Distribution now;}
+		Since all the cumulants for poisson distribution is \(\lambda\)	
+		\subsection*{Mean}
+		The mean of the Skellam distribution is given by the difference of the means of the Poisson distributions for \( n_p \) and \( n_{\bar{p}} \):
+		
+		\[
+		\text{Var}(n_p - n_{\bar{p}}) = \lambda_p + \lambda_{\bar{p}}
+		\]
+		
+		\subsection*{Variance}
+		The variance of the Skellam distribution is given by the sum of the variances of the Poisson distributions for \( n_p \) and \( n_{\bar{p}} \):
+		
+		\[
+		\text{Var}(n_p - n_{\bar{p}}) = \lambda_p - \lambda_{\bar{p}}
+		\]
+		
+		\subsection*{Skewness}
+		Skewness is the third standardized cumulant. For the Skellam distribution:
+		
+		\[
+		\text{Skewness} = \frac{\kappa_3}{var^{3/2}} = \frac{\lambda_p - \lambda_{\bar{p}}}{(\lambda_p + \lambda_{\bar{p}})^{3/2}}
+		\]
+		
+		This reflects any asymmetry in the distribution of protons and antiprotons.
+		
+		\subsection*{Kurtosis}
+		Kurtosis (excess kurtosis) is the fourth standardized cumulant. For the Skellam distribution:
+		
+		\[
+		\text{Kurtosis} =\frac{\kappa_4}{var^2}=\frac{\lambda_p + \lambda_{\bar{p}}}{(\lambda_p + \lambda_{\bar{p}})^2} = \frac{1}{\lambda_p + \lambda_{\bar{p}}}
+		\]
+		
+		\section*{Part (b)}
+		
+		At the \emph{critical point} (phase transition), the system's behavior changes dramatically. Specifically, at the critical point:
+		
+		\textbf{Correlations extend over longer distances (leading to larger regions contributing to particle production) and independence in particle production assumption fail.}
+		
+		These changes imply that the theoretical distribution of \( n_p - n_{\bar{p}} \) will deviate from the standard Skellam form at the critical point. Hence higher-order cumulants (like skewness and kurtosis) should show significant deviations from their values at  the critical point.
+	
+\section*{\color{teal} Question 4 - Random Walk}
+
+	\subsection*{(a) P(x=ma)=?}
+	
+	Let the random walker take n1 steps to the left(probability p) and n2 steps to the right(probability q=1-p). 
+	Hence for a total of N steps and resultant(difference) of m steps:
+	\[
+		n_1 = \frac{N+m}{2} \, , n_2 = \frac{N-m}{2}
+	\]
+	The number of ways walker can reach ma (a = step size):\\
+	\( = C^N_{n_1} p^{n_1} q^{n_2}  = C^N_{\frac{N+m}{2}} p^{\frac{N+m}{2}}q^{\frac{N-m}{2}}\)
+	
+	\subsection*{(b) Master equation}
+	To show:
+	\[
+		P_{N+1}(m) = p P_N(m-1) + q P_N(m+1)
+	\]
+	Meaning that if the random walker is at ma on the (N+1)th step it must have been at (m-1)a at last (Nth)step from where he lands at ma with probability p; or similarly, it must have been at (m+1)a at last step from where he lands at ma with probability q.
+	
+	From part(a), LHS:
+	\[
+		P_{N+1}(m) = C^{N+1}_{\frac{N+1+m}{2}} p^{\frac{N+1+m}{2}} q^{\frac{N+1-m}{2}}
+	\]
+	RHS:
+	\[
+		p \times C^{N}_{\frac{N+m-1}{2}} p^{\frac{N+m-1}{2}} q^{\frac{N-m+1}{2}}  + q \times  C^{N}_{\frac{N+m+1}{2}} p^{\frac{N+m+1}{2}} q^{\frac{N-m-1}{2}} 
+	\]
+	\[
+		= p^{\frac{N+m+1}{2}} q^{\frac{N-m+1}{2}} \times[C^{N}_{\frac{N+m-1}{2}} + C^{N}_{\frac{N+m+1}{2}}]
+	\]
+	The square bracket term:
+	\[
+		\frac{N!}{\frac{N+m-1}{2}! \frac{N-m+1}{2}!} + \frac{N!}{\frac{N+m+1}{2}! \frac{N-m-1}{2}!} 
+		= 
+		\frac{N!}{\frac{N+m-1}{2}! \frac{N-m-1}{2}!}
+		[\frac{1}{(N-m+1)/2} + \frac{1}{(N+m+1)/2}]
+	\]
+	The square bracket term above:
+	\[
+		\frac{N+1}{(N-m+1)/2 \times (N+m+1)/2}
+	\]
+	Substituting back, the first square bracket (\(\rightarrow RHS\)) term becomes:
+	\[
+		\frac{N+1!}{\frac{N+m+1}{2}!\frac{N-m+1}{2}!} = C^{N+1}_{(N+1+m)/2} \rightarrow P_{N+1}(m)
+	\]
+	Hence LHS = RHS. Verified.
+	
+	\subsection*{(c) Diffusion equation}
+	For p=q=1/2 and T=N\(\tau\), x=ma (\(\tau\), a \(\rightarrow\)0); the part (b) equation becomes
+	
+	\[
+		P(T+\tau, x) = (1/2)\times [P(x-a,T)+P(x+a,T)]
+	\]
+	Subtracting P(T,x) from both sides, gives:
+	\[
+		P(T+\tau, x)- P(T,x) = (1/2)\times [P(x+a,T)-P(x,T)-(P(x,T)-P(x-a,T))]
+	\]
+	Multiply-Divide by \(\tau\) on LHS and \( a^2\) on RHS:
+	\[
+			\frac{P(T+\tau, x)- P(T,x)}{\tau} = (a^2/2\tau)\times (1/a)[\frac{P(x+a,T)-P(x,T)}{a}-\frac{(P(x,T)-P(x-a,T))}{a}]
+	\]
+	which in the limit (\(\tau\), a \(\rightarrow\)0), gives:
+	\[
+		\partial P/\partial T = (a^2/2\tau) \, \partial^2 P/\partial x^2
+	\]
+	Comparing with the equation in question, D = \(a^2/2\tau\)
+	
+	\subsection*{Solution to Diffusion Equation}
+	
+	X = position of the paticle after N steps.\\
+	Thus X = \(\Sigma_{i=1}^N X_i\), where X$_i$ is each step in unbiased 1d random walk.\\
+	For large N, the random variable X becomes a sum of large number of iid random varibles; hence should tend to Gaussian under CLT.
+	\[
+		<X> = <\Sigma_{i=1}^N X_i> = N<X_i> = N(p\times a + p\times(-a)) = 0 
+	\](for unbiased random walk p=q=1/2 also iid assumption in second equality).
+	
+	\[
+		\sigma^2 = <(X-<X>)^2> = <X^2> = <(\Sigma_{i=1}^N X_i)^2> = <\Sigma X_i^2 + \Sigma_{i \neq j} X_i X_j >
+	\]
+	\[
+		 = <\Sigma X_i^2> + <\Sigma_{i \neq j} X_i X_j> = N<X_i^2> + (N^2-N) <X_i><X_j>   
+	\]
+	(iid assumption to split expectation over sums and since total N$^2$ terms and N 'X$_i^2$' terms, implies N$^2$ - N terms for $X_i X_j$ terms.) 
+	\[
+		= N(p (a)^2 + p(-a)^2) = Na^2 =(t/\tau) a^2 = 2t (a^2/2\tau) = 2Dt
+	\](t is total time for N steps, each step costs $\tau$ time, D is from (c) part).
+	
+	Hence the resultant Gaussian with $\boxed{\mu = 0, \sigma^2 = 2Dt}$\\
+	\(\boxed{ \frac{1}{\sqrt{4\pi Dt}} exp(-\frac{x^2}{4Dt})}\)
+	
+\end{document}
