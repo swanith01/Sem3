@@ -1,0 +1,480 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{amsmath} % for the matrix environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{bbold}
+% Margins
+\topmargin=-0.90in%-0.45%
+\evensidemargin=0in%0in%
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.5in
+\onehalfspacing
+
+\title{QFT Assignment - 1}
+\author{\textbf{\Large Swanith Upadhye}}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\Large
+	
+	\section*{\color{teal} Question 1 - Klein Paradox}
+	
+	\subsection{The Dirac equation} 
+	\[
+		(i\gamma^\mu \partial_\mu - m)\psi = 0\\
+		\Rightarrow (-i\gamma^0\partial_0 + i\gamma^k \partial_k - m)\psi =0
+	\]
+	\(\partial_0 = -\partial_t\) and \(\partial_k = \nabla\);substituting above
+	\[
+		i\gamma^0\partial_t\psi = -i\gamma^k\nabla\psi +m\psi
+	\]
+	Multiplying by \(\gamma_0\) on both sides to the left.
+	\[
+		(\gamma^0)^2 H\psi = \gamma^0\gamma^k p_k\psi + m\psi
+	\]
+	\((\gamma^0)^2=1\) and \(\gamma^0\gamma^k = \alpha^k\); Hence
+	\[
+		H\psi = \alpha^k p_k\psi + m\gamma^0\psi
+	\]which is as required.
+	In the above:-
+	\[
+		\gamma^0 = \beta = \begin{bmatrix}\mathbb{1} & 0 \\0 &-\mathbb{1} \end{bmatrix}\,
+		 \gamma^k = \begin{bmatrix}0 & \mathbb{\sigma}^k \\-\mathbb{\sigma}^k & 0 \end{bmatrix}
+	\]
+	
+	\subsection{Particle at rest}
+	For a particle at rest \(p_k = 0\); Hence H = \(m\gamma^0\)
+	Hence its eigenvalues are \({m,m,-m,-m}\) and the respective eigenvectors are:
+	\[
+		w_1(0)=\begin{bmatrix} 1\\0\\0\\0\end{bmatrix} \, w_2(0)=\begin{bmatrix} 0\\1\\0\\0\end{bmatrix} \, w_3(0)=\begin{bmatrix} 0\\0\\1\\0\end{bmatrix} \, w_4(0)=\begin{bmatrix} 0\\0\\0\\1\end{bmatrix}
+	\]
+	Hence the wavefunction :\\
+	 \(\psi_{1,2}(x)= w_{1,2}(0)exp(-imc^2t/\bar{h})\)  and  \(\psi_{3,4}(x)= w_{3,4}(0)exp(+imc^2t/\bar{h})\)
+	 
+	 The energy of \(\psi_{3,4}(x)\) is -mc$^2<0$; as suggested by the eigenvalues of \(w_{3,4}(0)\) 
+	 
+	 \subsection{Particle of mass m and momentum $p_k$} 
+	 
+	 The Hamiltonian for this case becomes:
+	 \[
+	 	H = \alpha^k p_k +m\gamma^0 = 
+	 	\begin{bmatrix}0 & \sigma^k\\\sigma^k & 0 \end{bmatrix}p_k + m	\begin{bmatrix}\mathbb{1} & 0\\0 & -\mathbb{1} \end{bmatrix}
+	 \]
+	 Expanding the matrices:
+	 \[
+	 	H = \begin{bmatrix}m&0&p_z&p_x-ip_y\\0&m&p_x+ip_y&-pz\\pz&p_x-ip_y&-m&0\\p_X+ip_y&-p_z&0&-m\end{bmatrix}
+	 \]
+	 The eigenvalues for this equation from mathematica are\\
+	 \[
+	 	\{\sqrt{m^2+p_x^2+p_y^2+p_z^2},\sqrt{m^2+p_x^2+p_y^2+p_z^2},-\sqrt{m^2+p_x^2+p_y^2+p_z^2},-\sqrt{m^2+p_x^2+p_y^2+p_z^2}\}
+	 \]
+	 The respective eigen vectors are:
+	 \[
+	 	w_1(0)=\frac{1}{E+m}\begin{bmatrix} E+m\\0\\p_z\\p_x+ip_y\end{bmatrix} \, w_2(0)=\frac{1}{E+m}\begin{bmatrix} 0\\E+m\\p_x-ip_y\\-p_z \end{bmatrix} \, 
+	 	w_3(0)=\frac{1}{E+m}\begin{bmatrix} -p_z\\-(p_x+ip_y)\\E+m\\0\end{bmatrix} \, 
+	 \]
+	 \[
+	 	w_4(0)=\frac{1}{E+m}\begin{bmatrix} -(p_x-ip_y)\\p_z\\0\\E+m\end{bmatrix}	
+	 \]
+	 For the normalisation factor, check
+	 \[
+	 	w_1(0)^\dagger w_1(0) = \begin{bmatrix}1&0&\frac{p_z}{E+m}&\frac{p_x-ip_y}{E+m}\end{bmatrix}.\begin{bmatrix}1\\0\\\frac{p_z}{E+m}\\\frac{p_x+ip_y}{E+m}\end{bmatrix} = 1 + \frac{p_x^2 + p_y^2 + p_z^2}{(E+m)^2}  = 1 + \frac{(E+m)(E-m)}{(E+m)^2}
+	 \]
+	 \[
+	 	= 1+\frac{E-m}{E+m} = \frac{2E}{E+m}
+	 \]
+	 Hence the wavefunctions become:
+	 \[
+	 	\psi_r(x) = \sqrt{\frac{E+m}{2E}}exp(-ip_\mu x^\mu\epsilon_r)w_r(0)
+	 \]
+	 where \(\epsilon_r = \{+1,+1,-1,-1\}\) for r = \{1,2,3,4\}
+	 
+	 In the rest frame the energy eigenvalues become:
+	 \{m,m,-m,-m\} so \(\psi_{3,4}\) are discarded(E$<0$ solutions)
+	 
+	\subsection{Potential Step}
+	
+	 For $z>0$ the Dirac equation becomes
+	 \[
+	 	\{\begin{bmatrix}\mathbb{E}&0\\0&\mathbb{E}\end{bmatrix}\}\psi =\{ \alpha^k p_k + m \gamma^0 +  \begin{bmatrix}\mathbb{V_0}&0\\0&\mathbb{V_0}\end{bmatrix}\}\psi
+	 \]
+	 Hence,
+	 \[
+	 	\{\begin{bmatrix}\mathbb{E-V_0}&0\\0&\mathbb{E-V_0}\end{bmatrix}\}\psi =\{ \alpha^k p_k + m \gamma^0\}\psi
+	 \]
+	 Hence the solutions are same as above, only replace E$\rightarrow$ E-V$_0$
+	 
+	 \subsection{Wave function matching}
+	 
+	 The wave functions(modulo normalisation factors):
+	 \[
+	 	\psi_i = a\, exp(ik_1z)\frac{1}{E+m}\begin{bmatrix}E+m\\0\\p\\0\end{bmatrix}
+	 \]	
+	 \[
+	 	\psi_r = b\, exp(-ik_1z)\frac{1}{E+m}\begin{bmatrix}E+m\\0\\-p\\0\end{bmatrix} + b'\, exp(-ik_1z)\frac{1}{E+m}\begin{bmatrix}0\\E+m\\0\\-p\end{bmatrix}
+	 \]
+	 \[
+	 \psi_t = d\, exp(ik_2z)\frac{1}{E-V_0+m}\begin{bmatrix}E-V_0+m\\0\\p'\\0\end{bmatrix} + d'\, exp(ik_2z)\frac{1}{E-V_0+m}\begin{bmatrix}0\\E-V_0+m\\0\\p'\end{bmatrix}
+	 \]
+	 Equating \(\psi_i(z=0)+\psi_r(z=0) = \psi_t(z=0)\), gives
+	\[
+		\begin{bmatrix}(a+b)\\b'\\(a-b)\frac{p}{E+m}\\-b'\frac{p}{E+m}\end{bmatrix} = \begin{bmatrix}d\\d'\\d\frac{p'}{E-V_0+m}\\d'\frac{p'}{E-V_0+m}\end{bmatrix}
+	\]	 	 
+	 From the above clearly b'=d'=0;also\\
+	%Now equating the derivatives of the wavefunctions wrt z at z=0, gives;
+	%\[
+	%	\begin{bmatrix}(a-b)(ik_1)\\0\\(a+b)(ik_1)\frac{p}{E+m}\\0\end{bmatrix} = \begin{bmatrix}d(ik_2)\\0\\d(ik_2)\frac{p'}{E-V_0+m}\\0\end{bmatrix}
+	%\]
+	\[ a+b=d \, and \, a-b = d\frac{k_2}{k_1}\frac{E+m}{E-V_0+m} =rd \]
+	where k$_1$=p and k$_2$ = p'. So
+	\[
+		k_1^2 = E^2 - m^2 
+	\]
+	\[
+		k_2^2 = (E-V_0)^2 - m^2 = (E-V_0-m)(E-V_0+m)
+	\]
+	\subsection{Transmittance and Reflectance}
+	
+	The probability currents(modulo normalisation factors):
+	\[
+		j_i = \psi_i^\dagger \gamma^0\gamma^3 \psi_i = \begin{bmatrix}1&0&\frac{p}{E+m}&0\end{bmatrix} \begin{bmatrix}0&0&1&0\\0&0&0&-1\\1&0&0&0\\0&-1&0&0\end{bmatrix} \begin{bmatrix}1\\0\\\frac{p}{E+m}\\0\end{bmatrix} = \frac{2p}{E+m}|a|^2
+	\]
+	Similarly,
+	\[
+		j_r = \psi_r^\dagger \gamma^0\gamma^3 \psi_r = \begin{bmatrix}1&0&\frac{-p}{E+m}&0\end{bmatrix} \begin{bmatrix}0&0&1&0\\0&0&0&-1\\1&0&0&0\\0&-1&0&0\end{bmatrix} \begin{bmatrix}1\\0\\\frac{p}{E+m}\\0\end{bmatrix} = \frac{-2p}{E+m}|b|^2
+	\]
+	and,
+	\[
+		j_t = \psi_t^\dagger \gamma^0\gamma^3 \psi_t = \begin{bmatrix}1&0&\frac{p'}{E-V_0+m}&0\end{bmatrix} \begin{bmatrix}0&0&1&0\\0&0&0&-1\\1&0&0&0\\0&-1&0&0\end{bmatrix} \begin{bmatrix}1\\0\\\frac{p'}{E-V_0+m}\\0\end{bmatrix} = \frac{2p'}{E-V_0+m}|d|^2
+	\]
+	Hence Reflectance:
+	\[
+		R = |\frac{b}{a}|^2
+	\]
+	From a+b=d and a-b =rd;
+	\[
+		(a + b)r = a-b \Rightarrow a(r-1) = b(-1-r) \Rightarrow \frac{a}{b} = \frac{1+r}{1-r}
+	\]
+	Now,
+	\[
+		R = \frac{(1-r)^2}{(1+r)^2} \, Hence \, \, , T = 1-R  = \frac{4r}{(1+r)^2}
+	\]
+	When \(V_0 > E + m\) check that \(r = \frac{k_2}{k_1}\frac{E+m}{E-V_0+m} < 0 \) since \(k_2/k_1\) doesn't change sign in this condition.\\
+	Hence, r = - $|r|$ ;
+	So \( R = \frac{(1+|r|)^2}{(1-|r|)^2}>1 \dotfill\)(for all $|r|>0$)\\
+	There may be particle anti-particle creation for this condition which is increasing the reflected flux.
+	
+	
+	\section{\color{teal} Momentum operator for a Scalar field}
+	
+	\subsection{Infinitesimal translation}
+	Given
+	\[
+		T(a)\phi(x)T(a)^{-1} = \phi(x-a)
+	\]
+	For infinitesimal translation \(T(a) = 1 - ia_\mu P^
+	\mu\) and \( T(a)^{-1} = 1 + i a_\mu P^\mu\)\\
+	Substituting back above:\\
+	\[
+		\phi(x-a) = (1 - ia_\mu P^
+		\mu)\phi(x)(1+ia_\mu P^\mu) \approxeq \phi(x) +ia_\mu(\phi(x)P^\mu - P^\mu \phi(x)) + O(a^2)
+	\]
+	\[
+		\Rightarrow \phi(x) - \phi(x-a) = -ia_\mu[\phi(x), P^\mu]
+	\]
+	\[
+		\Rightarrow i \frac{\phi(x)-\phi(x-a)}{x-(x-a_\mu)}  = [\phi(x),P^\mu]
+	\]
+	\[
+		\Rightarrow \boxed{i \partial^\mu \phi(x) = [\phi(x), P^\mu]}
+	\]
+	
+	\subsection{Time component}
+	
+	Since \(\partial^0 = \partial^t\) and \(P^0 = H\)\\
+	\( \boxed{i\partial ^t \phi= [\phi,H]}\)
+	
+	\subsection{Klein Gordon Equation using H}
+	
+	For a free scalar field
+	\[
+		H = \int \mathcal{H} d^3x = \int d^x [\frac{1}{2}\Pi(x)^2 + \frac{1}{2}\nabla\phi(x)^2 + \frac{1}{2}m^2\phi(x)^2 - \Omega_0]
+	\]
+	%Hence substituting in Heisenber equation of motion($[\phi(y),H(x)]$only \(\Pi\) term remains):
+	%\[
+		%\int d^3x \frac{1}{2}[\phi(y), \Pi(x)^2] \rightarrow \Pi(x)[\phi(y),\Pi(x)] + [\phi(y),\Pi(x)]\Pi(x)
+	%\]
+	%\[
+	%	 = \int d^3x \, i \, \delta(x-y)\Pi(x) = i\Pi(y) = i\dot{\phi}(y)
+	%\]
+	See that,
+	\[
+		i[\dot{\phi},H] = - (\partial^t)^2 \phi(x)................. (1)	
+	\]
+	Now for the LHS
+	\[
+		i\int d^3x[\Pi(y),\frac{1}{2}(\Pi(x)^2  + (\nabla\phi(x))^2 + m^2\phi(x)^2 - \Omega_0)]
+	\]
+	Only terms that remain,
+	\[
+		\frac{i}{2} \int d^3x \, \, \nabla \phi(x)[\Pi(y),\nabla\phi(x)] + [\Pi(y),\nabla\phi(x)]\nabla \phi(x) -i 2m^2\delta(x-y)\phi(x) 
+	\]
+	$\nabla$may be pulled out of the commutator, since it only acts on x terms and not y.
+	\[
+		\int d^3x \nabla\phi(x)\nabla\delta(x-y) + m^2\phi(x)
+	\]	
+	Integrating the first term by parts
+	\[
+		-\int d^3x \nabla^2\phi(x)\delta(x-y) + m^2\phi(x)
+	\]
+	Equating with (1):
+	\[
+		0 = ((\partial^t)^2-\nabla^2 + m^2) \phi = \boxed{(-\square +m^2)\phi=0}
+	\]
+	which is the required KG equation.
+	
+	\subsection{Free field momentum operator}
+	
+	\[
+		[P^\mu(x),\phi(y)] = \int d^3x [\Pi(x)\nabla\phi(x), \phi(y)] \rightarrow [\Pi(x),\phi(y)]\nabla\phi(x) \rightarrow -i\delta(x-y)\nabla\phi(x)
+	\]
+	\[
+		\Rightarrow \boxed{[P^\mu(x),\phi(y)] = -i \nabla \phi(y)}
+	\]
+	which is as required by part (1).
+	
+	\subsection{P in terms of a(k) and a(k)$^\dagger$}
+	
+	\[
+		P = -\int d^3x \dot{\phi}(x)\nabla\phi(x)
+	\]
+	Using,
+	\[
+		\phi(x)= \int \tilde{dk} \, a(k) exp(-i\omega t + i\bar{k}.\bar{x})) + a(k)^\dagger exp(i\omega t - i\bar{k}\bar{x})
+	\]
+	So,
+	\[
+		\dot{\phi(x)} = \int \tilde{dk} [-i\omega a(k)exp(-i\omega t + i\bar{k}.\bar{x})) + i\omega a(k)^\dagger exp(i\omega t - i\bar{k}\bar{x})]
+	\]
+	And, 
+	\[
+		\nabla\phi(x) = \int \tilde{dk} [i\bar{k} a(k) exp(-i\omega t + i \bar{k}.\bar{x}) -i\bar{k} a(k)^\dagger exp(i\omega t - i \bar{k}. \bar{x})]
+	\]
+	Substituting back into the P equation:
+	\[
+		P = -\int d^3x \tilde{dk}\tilde{dk'}[-\omega a(k) exp(-i\omega t + i\bar{k}.\bar{x}) + \omega a(k)^\dagger exp(i\omega t - i \bar{k}.\bar{x})] 
+	\]
+	\[
+	 \times [\bar{k'}a(k')exp(-i\omega t + i\bar{k'}.\bar{x}) - \bar{k'}a(k')^\dagger exp(i\omega t - i\bar{k'}\bar{x})]
+	\]
+	\[
+		 = \int d^3x \tilde{dk}\tilde{dk'} \omega \bar{k'}[a(k)exp(ikx) - a(k)^\dagger exp(-ikx)][-a(k')exp(ik'x)+a(k')^\dagger exp(-ik'x)]
+	\]
+	\[
+		= \int d^3x \tilde{dk}\tilde{dk'} \omega \bar{k'} [-a(k)a(k')exp(i(k+k')x) + a(k)a(k')^\dagger exp(i(k-k')x)
+	\]
+	\[
+		+ a(k)^\dagger a(k')exp(-i(k-k')x) - a(k)^\dagger a(k')^\dagger exp(-i(k+k')x)]
+	\]
+	\[
+		=\int \tilde{dk}\tilde{dk'}\omega \bar{k'}(2\pi)^3[-a(k)a(k')\delta(k+k')e^{-i2\omega t} +  a(k)a(k')^\dagger \delta(k-k') + a(k)^\dagger a(k')\delta(k-k')
+	\]
+	\[
+		- a(k)^\dagger a(k')^\dagger\delta(k+k')e^{i2\omega t} ]
+	\]
+	The integration variable:
+	\[
+		= (2\pi)^3\int \tilde{dk}\omega \frac{d^3k'}{(2\pi)^3 2\omega} \bar{k'}...........
+	\]
+	Continuing for P
+	\[
+		= \int \tilde{dk} \frac{\bar{k}}{2}[a(k)a(k)^\dagger +a(k)^\dagger a(k) - a(k)a(-k)e^{-i2\omega t} +a(k)^\dagger a(-k) e^{i2\omega t} ] 
+	\]
+	The third and fourth terms are odd and vanish upon the \(d^3\bar{k}\) integral:
+	\[
+		\Rightarrow P = \int \tilde{dk} \frac{\bar{k}}{2}[a(k)a(k)^\dagger +a(k)^\dagger a(k)]	
+	\]
+	Now, from $[a(k), a(k')^\dagger] = \delta(k-k')$:
+	\[
+		= \int \tilde{dk} \frac{\bar{k}}{2}[2a(k)^\dagger a(k) +\cancel{\delta(k-k)}]
+	\]
+	Finally,
+	\[
+		\Rightarrow \boxed{P = \int \tilde{dk} \, \bar{k} \, a^\dagger (k) a(k)}
+	\]
+	
+	\section*{\color{teal}Question 3 - Particle Creation by Classical Source}
+
+	\subsection{Equation of Motion for classical source Lagrangian}
+	
+	Given,
+	\[
+		\mathcal{L} = -\frac{1}{2}\partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2 + j(x)\phi(x)
+	\]
+	The E-L equation of motion, but first
+	\[
+		\partial \mathcal{L}/\partial (\partial_\alpha \phi) = - \frac{1}{2} (\delta^\alpha_\mu)\partial^\mu \phi \rightarrow \partial^\alpha \phi + \frac{1}{2} g^{\mu \nu}\delta_\nu^\alpha \partial_\mu \phi \rightarrow g^{\mu \alpha } \partial_\mu \phi = \partial^\alpha \phi
+	\]
+	\[
+		= -\partial^\alpha \phi
+	\]
+	Thus,
+	\[
+		\partial_\alpha( \partial \mathcal{L}/\partial (\partial_\alpha \phi)) =  -\partial_\alpha \partial^\alpha \phi
+	\]
+	And,
+	\[
+		\partial \mathcal{L}/\partial \phi = -m^2 \phi  + j 
+	\]
+	Finally, equating the above two parts,
+	\[
+		(-\square + m^2)\phi(x) = j(x)
+	\]
+	Greens function:
+	\[
+		(-\square + m^2)D_R(x-y) = -i\delta^4(x-y)
+	\]
+	Writing the greens function as the Inverse fourier transform of $\tilde{D_p}$
+	\[
+		D_R(x-y) = \int \frac{d^4p}{(2\pi)^2} \, \tilde{D(p)} \, exp(ip(x-y))
+	\]
+	
+	\subsection{Evaluating the Greens Function in momentum space}
+	
+	Substituting into the above equation, LHS
+	\[
+		\int \frac{d^4p}{(2\pi)^2} \, (p^2 + m^2) \, \tilde{D(p)} \, exp(ip(x-y))
+	\]
+	And the RHS,
+	\[
+		-i(2\pi)^2\int \frac{d^4p}{(2\pi)^2} exp(ip(x-y))
+	\]
+	Comparing the integrands,
+	\[
+		\tilde{D(p)} = \frac{1}{(2\pi)^2}\frac{-i}{p^2 + m^2}
+	\]
+	
+	\subsection{Inverting the momentum space Greens function}
+	
+	From part (2),
+	\[
+		D_R(x-y) = \int \frac{d^4p}{(2\pi)^2} \, \frac{-i}{p^2 + m^2} \, exp(ip(x-y))
+	\]
+	Expanding the components:
+	\[
+		D_R(x-y) = \int \frac{d^4p}{(2\pi)^2} \, \frac{-i}{p^2 + m^2} \, exp(-ip^0(x_0-y_0)) exp(i\bar{p}(\bar{x}-\bar{y}))
+	\]
+	Regularizing the integral:
+	\[
+		D_R(x-y) = \int \frac{d^4p}{(2\pi)^2} \, \frac{i}{p0^2 - \bar{p}^2 - m^2 + i\epsilon} \, exp(-ip^0(x_0-y_0)) exp(i\bar{p}(\bar{x}-\bar{y}))
+	\]
+	The poles of the expression are at $p^0 = \pm (E_p - i\eta)$; in the small $\epsilon$ approximation. Also $E_p = \sqrt{p^2 + m^2}$ and $\eta$ is related to $\epsilon$ via constant multiples, hence is also a small value.\\
+	
+	The integral now becomes,
+	\[
+		D_R(x-y) = \int \frac{d^3p}{(2\pi)^4} \,exp(i\bar{p}(\bar{x}-\bar{y})) \, \int dp^0 \frac{i}{(p^0 -(E_p - i\eta))(p_0 - (-E_p + i\eta))} \,
+	\]	
+	\[
+		 exp(-ip^0(x_0-y_0)) 
+	\]
+	The $p^0$ integral has the first pole below the real line and second pole above the real line. The first pole works for $x_0 > y_0$ and the contour enclosing it is in the lower half plane . Similarly, the second pole works for $y_0>x_0$ and the contour enclosing it is in the upper half plane.\\
+	
+	{\color{red}\textbf{ENTER IMAGE HERE}\\}
+	
+	So the $p^0$ integral becomes 
+	\[
+		2\pi i [(-1)\theta(x_0-y_0)\frac{i}{2E_p}exp(-iE_p(x_0-y_0)) + \theta(y_0-x_0)\frac{-i}{2E_p}exp(iE_p(x_0 - y_0))]
+	\]
+	(-1) for clockwise sense of the contour.\\
+	Taking the i inside; %and noticing that: $\theta(y_0-x_0) = 1 - \theta(x_0-y_0)$
+	\[
+		=	2\pi [\theta(x_0-y_0)\frac{1}{2E_p}exp(-iE_p(x_0-y_0)) + \theta(y_0-x_0)\frac{1}{2E_p}exp(iE_p(x_0 - y_0))]
+	\]
+	Now taking the complete integral
+	\[
+		D_R(x-y) = \int \frac{d^3p}{(2\pi)^3} \,exp(i\bar{p}(\bar{x}-\bar{y})) \, [\theta(x_0-y_0)\frac{1}{2E_p}exp(-iE_p(x_0-y_0)) 
+	\]
+	\[
+		+ \theta(y_0-x_0)\frac{1}{2E_p}exp(iE_p(x_0 - y_0))] 
+	\]
+	\[
+		= \int \frac{d^3p}{(2\pi)^3}  \, \theta(x_0-y_0)\frac{1}{2E_p}exp(ip(x-y)) 
+		+ \theta(y_0-x_0)\frac{1}{2E_p}exp(iE_p(x_0 - y_0)exp(i\bar{p}(\bar{x}-\bar{y})))
+	\]\\
+	
+	In the second term change $\bar{p}\rightarrow \bar{-p}$ to make it a four vector.  The $4\pi p^2 dp \rightarrow 4\pi(-p)^2 d(-p) = 4\pi p^2 (dp)$ but minus sign is required to change the limits of integration back
+	Thus finally,
+	
+	\[
+		\boxed{D_R(x-y) =  \int \frac{d^3p}{(2\pi)^3}  \, [\theta(x_0-y_0)\frac{1}{2E_p}exp(ip(x-y)) 
+		+ \theta(y_0-x_0)\frac{1}{2E_p}exp(-ip(x- y))]}
+	\]
+	%Now notice that $\theta(y_0-x_0) = (1 - \theta(x_0-y_0))$\\
+	%Therefore now the greens function becomes
+	%\[
+	%	= \int \frac{d^3p}{(2\pi)(2E_p)} \theta(x_0 - y_0) \, [exp(ip(x-y)) - exp(-ip(x- y))] + \int \frac{d^3p}{(2\pi)(2E_p)} exp(-ip(x- y))
+	%\]
+	
+	\subsection{New Field with source terms}
+	
+	The solution to the Equation of motion is:
+	\[
+		\phi(x) = \phi_0(x) + i \int d^4y D_R(x-y)j(y)
+	\]
+	Where, $\phi_0(x)$ is the solution to the sourceless homogeneous part:
+	\[
+		\phi_0(x) = \int \frac{d^3k}{(2\pi)^3} (a(k)e^{ikx} + a^\dagger(k)e^{-ikx})
+	\]
+	The second term of the full solution:
+	\[
+		= i \int \frac{d^4y d^3p}{(2\pi)^3(2E_p)} [\theta(x_0 - y_0)exp(ip(x-y))j(y) + \theta(y_0-x_0)exp(-ip(x-y))j(y)]
+	\]
+	
+	In the first term since $x_0>y_0$ and since the source is turned of within $y_0,x_0$ the $\theta(x_0-y_0)$ can be set to 1. Similarly in the other case the region of interest is outside j's domain where $\theta(y_0-x_0)$ can be set to 1.\\
+	
+	{\color{red}\textbf{ENTER IMAGE HERE}}\\
+	\[
+		i \int \frac{d^3p}{(2\pi)^3 2E_p} exp(ipx) \int d^4y exp(-ipy)j(y) + exp(-ipx)\int d^4y exp(ipy)j(y)
+	\]
+	In the second term taking complex conjugate and changing variables $y \rightarrow -y$ gives a residual minus sign for change of integration limits.
+	\[
+		= i \int \frac{d^3p}{(2\pi)^3 2E_p} exp(ipx) \int d^4y exp(-ipy)j(y) - exp(-ipx)\int d^4y exp(ipy)j^*(y)
+	\]
+	From the definition of transform in the question:
+	\[
+		= i \int \frac{d^3p}{(2\pi)^3 2E_p} [exp(ipx) \tilde{j(p)} - exp(-ikx)\tilde{j^*(p)}]
+	\]
+	Hence finally, the total solution:
+	\[
+		\boxed{\phi(x) = \phi_0 + ... = \int \frac{d^3p}{(2\pi)^3 2E_p} [exp(ipx) (a(k) + i\tilde{j(p)}) + exp(-ikx)(a^\dagger(k) - i\tilde{j^*(p)})]}
+	\]
+	
+	\subsection{Source term giving particles}
+	
+	%The Hamiltonian density,
+	%\[
+	%	\mathcal{H}  = \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)}(\partial_\mu \phi) - \mathcal{L}
+	%\]
+	%\[
+	%	= \frac{1}{2}\Pi(x)^2 - \frac{1}{2}\nabla \phi(x)^2 + \frac{1}{2} m^2 \phi^2 - j(x)\phi(x)
+	%\]
+	%wher $\Pi(x) = \dot{\phi}(x)$
+	%And the Hamiltonian:
+	%\[
+	%	H = \int d^3x \mathcal{H} 
+	%\]
+	
+	
+\end{document}
