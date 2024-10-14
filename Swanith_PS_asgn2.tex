@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{amsmath} % for the matrix environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{bbold}
+% Margins
+\topmargin=-0.90in%-0.45%
+\evensidemargin=0in%0in%
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.5in
+\onehalfspacing
+
+\title{Probability \& Statistics - Assignment - 2}
+\author{\textbf{\Large Swanith Upadhye}}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\noindent\hrulefill
+	\Large
+	
+	\section{\color{teal}Question 1 - Estimator for third cumulant}
+	
+	The expression of third central moment in terms of central cumulants
+	\[
+		M_{3c} = \kappa_{3c} - 3\kappa_{2c}\cancel{\kappa_{1c}} + \cancel{\kappa_{1c}^3} \Rightarrow \kappa_{3c} = M_{3c}= \frac{1}{N}\Sigma_1^N (x_i - \bar{x})^3
+	\]
+	Now, E[\ \(\Sigma_1^N(x_i-\bar{x})^3\)], for a guess estimator $\alpha \, \Sigma_1^N(x_i-\bar{x})^3$ for $\kappa_{3c}$:
+	\[
+		E[\Sigma(x_i-\bar{x})^3] = E[\Sigma\{(x_i-\mu)-(\bar{x}-\mu)\}^3] 
+	\]
+	\[
+		= E[\Sigma\{(x_i-\mu)^3 -3(x_i-\mu)^2(\bar{x}-\mu) + 3(x_i-\mu)(\bar{x}-\mu)^2 - (\bar{x}-\mu)^3\}]
+	\]
+	First term:
+	\[
+		NE[(x_i-\mu)^3] = N M_{3c}
+	\]
+	Second term:
+	\[
+		E[\Sigma_i(x_i-\mu)^2 \frac{1}{N}\Sigma_j(x_j-\mu)] = \frac{1}{N}E[\Sigma(x_i - \mu)^3] =M_{3c}
+	\]
+	(Non zero only for i=j)\\
+	Third term:
+	\[
+		E[\Sigma_i(x_i-\mu)\frac{1}{N^2}\Sigma_j(x_i-\mu)\Sigma_k(x_k-\mu)] = \frac{1}{N^2}E[\Sigma_i(x_i-\mu)^3] = \frac{1}{N} M_{3c}
+	\]
+	Final term, similar arguments lead to:
+	\[
+		\frac{N}{N^3}E[\Sigma_i(x_i-\mu)\Sigma_j(x_j-\mu)\Sigma_k(x_k-\mu)] = \frac{1}{N}M_{3c}
+	\]
+	Hence,combining above results:
+	\[
+		E[\Sigma(x_i-\bar{x})^3] = NM_{3c} - 3M_{3c}+\frac{3}{N}M_{3c} - \frac{1}{N}M_{3c} =\frac{(N-1)(N-2)}{N}M_{3c}
+	\]
+	Thus an unbiased estimator of $M_{3c}$
+	\[
+		\boxed{\hat{M_{3c}}\, \vline_{unbiased} = \frac{N^2}{(N-1)(N-2)} \, [\frac{1}{N}\Sigma_{i=1}^N	(x_i - \bar{x})^3]}
+	\]
+	
+	\section{\color{teal}Question-2 Variance of Sample Variance} 
+	 
+	 The $\chi^2$ distribution with k dofs:
+	 \[
+	 	\chi^2 = \frac{1}{\Gamma(k/2)2^{k/2}}x^{k/2-1}exp(-x/2)
+	 \]
+	Its mean:
+	\[
+		<x>_{\chi^2} = \frac{1}{\Gamma(k/2)2^{k/2}}\int_0^\infty x^{k/2} exp(-x/2)dx \rightarrow \int_0^\infty (2y)^{k/2}exp(-y)d(2y) =
+	\]
+	\[	
+		 \frac{\Gamma(k/2 + 1)2^{k/2+1}}{\Gamma(k/2)2^{k/2}} = 2k/2 = k
+	\]
+	The second moment:
+	\[
+		<x^2>_{\chi^2} = \frac{1}{\Gamma(k/2)2^{k/2}}\int_0^\infty x^{k/2+1} exp(-x/2)dx \rightarrow \int_0^\infty (2y)^{k/2+1}exp(-y)d(2y) =
+	\]
+	\[
+		= \frac{\Gamma(k/2 + 2)2^{k/2+2}}{\Gamma(k/2)2^{k/2}} = 4(k/2+1)(k/2) = k(k+2)
+	\]
+	Hence variance:
+	\[
+		\sigma^2_{\chi^2} = \langle x^2\ \rangle - \langle x \rangle^2 = k(k+2) - k^2 =2k
+	\]
+	\subsection{Expectation of Sample Variance and its Variance}
+	
+	 The quantity $\frac{(N-1)s^2}{\sigma^2}$ is distributed like a $\chi^2$ with (N-1) dos:
+	 Hence,
+	\[
+		\boxed{\langle s^2 \rangle = \frac{\sigma^2}{N-1}\{\langle x\rangle_{\chi^2}\rightarrow (N-1)\} = \sigma^2}
+	\]
+	Hence $s^2$ is an unbiased estimator of the population variance.
+	Now as for its variance:
+	\[
+		Var(\frac{(N-1)s^2}{\sigma^2}) = Var(\chi^2_{N-1}) = 2(N-1) \Rightarrow \boxed{Var(s^2) = \frac{\sigma^4}{(N-1)^2}\times 2(N-1) = \frac{2\sigma^4}{N-1}}
+	\]
+	Check:
+	\[
+		\langle (s^2-\sigma^2)^2\rangle = \langle (s^2)^2 -2\sigma^2 s^2 + \sigma+4  \rangle = (Var(s^2)+\cancel{E[s^2]^2) -2\sigma^2E[s^2] + \sigma^4} = Var(s^2)
+	\]
+	
+	\subsection{Modified sample variance for efficiency}
+	
+	\[
+		\langle \frac{(N+k)s_k^2}{\sigma^2}\rangle = N-1 \Rightarrow \boxed{\langle s_k^2\rangle = \frac{\sigma^2(N-1)}{N+k}}
+ 	\]
+	\[
+		Var(\frac{(N+k)s_k^2}{\sigma^2}) = 2(N-1) \Rightarrow \boxed{Var(s_k^2) = \frac{2(N-1)\sigma^4}{(N+k)^2}}
+	\]
+	Now,
+	\[
+		\boxed{\langle (s_k^2 - \sigma^2)^2 \rangle}  = \langle (s_k^2)^2  - 2\sigma^2 s_k^2 + \sigma^4 \rangle = Var(s_k^2) + E[s_k^2]^2)  - 2\sigma^2 E[s_k^2] + \sigma^4
+	\]
+	\[
+		= \boxed{\frac{2(N-1)\sigma^4}{(N+k)^2} + \frac{\sigma^4(N-1)^2}{(N+k)^2} - 2\frac{\sigma^4(N-1)}{N+k} + \sigma^4}
+	\]
+	For this as a function of k to be extremised:
+	\[
+		-2\frac{(N-1)}{(N+k)^3} - \frac{(N-1)^2}{(N+k)^3} + \frac{N-1}{(N+k)^2} \, \vline_{\, \, k_0} = 0
+	\]
+	\[
+		\Rightarrow \frac{-2-N+1}{N+k} + 1 = 0 \Rightarrow \boxed{ k_{ext} = 1}
+	\](k$>0$)
+	
+\end{document}
