@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{amsmath} % for the matrix environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{bbold}
+% Margins
+\topmargin=-0.90in%-0.45%
+\evensidemargin=0in%0in%
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.5in
+\onehalfspacing
+
+\title{Elementary Particle Physics-Assignment-1}
+\author{\textbf{\Large Swanith Upadhye}}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\noindent\hrulefill
+	\Large
+	
+	\section{\color{teal} Question 1 - Natural Units}
+	
+	Dimensionally,\\
+	h =$ML^2T^{-1}$, c = LT$^{-1}$, $\Rightarrow$ hc = ML$^3T^{-2} =ML^2T^{-1}.L $= Energy $\times$ Length\\
+	
+	Hence,
+	\[
+		\hbar c = \frac{hc}{2\pi} = \frac{6.626\times 10^{-34} \times 3 \times 10^8}{2\pi}\frac{10^6}{1.6\times10^{-19} \times 10^-15} \approx \boxed{197.7 MeV, fermi = \hbar c}
+	\] 
+	(since 1 MeV = $\frac1.6 \times 10^{-19}10^6$ Joules; 1 fermi = $10^{-15}$meters).
+	
+	\section{\color{teal} Question 2 Natural Units contd.}
+	 
+	 From question 1, $\hbar c = 1 = 0.198 Gev \, fermi  $
+	 Hence, 
+	\[
+		GeV^{-1} = 0.198 \, fermi \Rightarrow GeV^{-2} = 0.198^2 fermi^2
+	\]
+	Now, $1 fermi^2 = 10^{-30} m^2 = 10 mbarn$\\
+	Hence,
+	\[
+		\boxed{1 GeV^{-2} = 10 \times 0.198^2 \, mbarn = 0.392 \, mbarn}
+	\]
+	
+	\section{\color{teal} Question-3 Generalised Lorentz transformation}
+	
+	Let the boost(relative velocity of frames) be along a general direction $\hat{n}$\\
+	Let the magnitude of the boost be $-\beta$\\
+	Let the space coordinates in S frame be given by $\bar{r}$; and in S' frame by $\bar{r'}$\\
+	Now the components of $\bar{r}$ along the boost direction is given by $\bar{r_{\parallel}}=(\bar{r}.\hat{n})\hat{n}$\\
+	Hence the vector component perpendicular to the boost is given by : $\bar{r_{\perp}} = \bar{r} - (\bar{r}.\hat{n})\hat{n}$\\
+	We know that the boost only transforms the parallel components and time coordinates; the perpendicular spatial components remain un-transformed.\\
+	Hence the transformed coordinates:
+	\[
+		\boxed{ct' = \gamma[ct + \beta (\bar{r}.\hat{n})]}..........(1)
+	\]
+	\[
+		\bar{r'_{\parallel}} = \gamma[\bar{r_{\parallel}} + \beta ct\hat{n}] = \gamma[\bar{r}.\hat{n} + \beta ct]\hat{n}
+	\]
+	\[
+		\bar{r'_{\perp}} = \bar{r'_{\perp}} = \bar{r} - (\bar{r}.\hat{n})\bar{r}
+	\]
+	
+	Hence,
+	\[
+		\bar{r'} = \bar{r'_{\parallel}} + \bar{r'_{\perp}} = \gamma[\bar{r}.\hat{n} + \beta ct]\hat{n} + \bar{r} - (\bar{r}.\hat{n})\bar{r} 
+	\]
+	\[
+		\Rightarrow \boxed{\bar{r'}= \bar{r} + (\gamma-1)(\bar{r}.\hat{n})\hat{n} + \beta\gamma ct \hat{n}}.................(2)
+	\]
+	Given in the question, to prove:
+	\[
+		\bar{r'} = \bar{r} + \frac{\beta^2\gamma^2}{\gamma+1}(\bar{r}.\hat{n}) + \beta \gamma t \hat{n}
+	\]
+	Check:
+	\[
+		\frac{\beta^2 \gamma^2}{\gamma + 1} = \frac{\gamma^2-1}{\gamma^2} \frac{\gamma^2}{\gamma + 1} = \frac{(\gamma-1)(\gamma+1)}{\gamma + 1} = \gamma -1 
+	\]
+	which matches the parallel component - coefficient in (2).\\
+	Hence, (1)(2) gives the generalised Lorentz transformation
+	 
+	\textbf{\color{red} ALTERNATE}
+	
+	\section{\color{teal} Frame transformation preserves scalar product}
+		
+	In the rest frame, \(x^\mu = (x^0,x^1,x^2,x^3) = (ct,x,y,z)\)\\
+	and, \(x_\mu = g_{\mu\nu} x^\nu = diag\{1,-1,-1,-1\} . (x^0,x^1,x^2,x^3) = (ct,-x,-y,-z) \)\\
+	Thus, \(x^\mu x_\mu = (ct,x,y,z).(ct,-x,-y,-z) = (ct)^2 - \bar{x}^2\)\\
+	Now in the S' frame, 
+	\[
+		 x'^\mu = \Lambda^\mu_\nu x^\nu= \begin{bmatrix}\gamma &-\beta\gamma&0&0\\-\beta\gamma&\gamma&0&0\\0&0&1&0\\0&0&0&1\end{bmatrix}. \begin{bmatrix}ct\\x\\y\\z\end{bmatrix} = \begin{bmatrix}\gamma \, ct - \beta\gamma \, x\\-\beta\gamma \, ct + \gamma \, x \\y\\z \end{bmatrix}
+	\]	 
+	Also,
+	\[
+		x'_\mu = g_{\mu\nu} x'^\nu = diag\{1,-1,-1,-1\}. \begin{bmatrix}\gamma \, ct - \beta\gamma \, x\\-\beta\gamma \, ct + \gamma \, x \\y\\z \end{bmatrix} = \begin{bmatrix}\gamma \, ct - \beta\gamma \, x\\\beta\gamma \, ct - \gamma \, x \\-y\\-z \end{bmatrix}
+	\]
+	Now,
+	\[
+		x'_\mu x'^\mu = (\gamma ct-\beta \gamma x)^2 - (\beta\gamma ct - \gamma x)^2 -y^2 - z^2 
+	\]
+	\[	
+		=  c^2t^2\gamma^2+\beta^2\gamma^2x^2-2\beta\gamma^2 ctx -\beta^2\gamma^2 c^2 t^2 - \gamma^2 x^2 + 2\beta\gamma^2 ct x - y^2 - z^2 
+	\]
+	\[	
+		= c^2t^2\gamma^2(1-\beta^2)-x^2\gamma^2(1-\beta^2)-y^2-z^2 = (ct)^2 - \bar{x}^2 
+	\]
+	
+	\section{\color{teal} Question- 5 Cosmic Ray Muons}
+	
+	\subsection{Non relativistic calculation}
+	
+	The distance traveled without relativistic considerations:
+	\[
+		L\, \vline_{NR}= vt = 0.998 \times 3\times 10^5 \,km/s \times 2.2 \mu\,s \boxed{\approx 0.659 km \rightarrow L \, \vline_{proper}}
+	\]
+	So the muon decays (on an average but ignoring statistical nature of the lifetime) at around 7.43 km above sea level.
+	
+	\subsection{Relativistic considerations}
+	
+	In the lab frame due to time dilation the lifetime increases to,
+	\[
+		t \,\vline_{lab} = \gamma t \,\vline_{proper} \approx 15.82 \times 2.2 \mu s \approx 34.80 \mu s
+	\]
+	Now the distance traveled in the lab frame
+	\[
+		L \, \vline_{lab} = vt \, \vline_{lab} = 0.998 c \times 34.80 \mu s = 0.998 \times 3 \times 34.80 \, km \boxed{\approx 10.42 km = L \, \vline_{lab}}
+	\]
+	which is more than its height from the sea level. So it can  reach the Earths surface before decaying.
+	
+	\subsection{Muon Rest frame}
+	
+	In its rest frame muon experiences a length contraction, so its height from see level at its speed will be,
+	
+	\[
+		L \, \vline_{muon} = 8km \times \frac{1}{\gamma} = \frac{8}{15.82} \boxed{\approx 0.5082 \, km \rightarrow L \, \vline_{muon}}
+	\]
+	From section 5.1, we see that, height of the see level is less than the what muon can travel at its given speed. This is consistent with sec 5.2 's Lab frame calculations.
+		
+	\subsection{The pion}
+	
+	Given the life time of pions is of the order of 10 ns. If it travels at same ultra-relativistic speed as muon (0.998 c), then the distance it travels before decaying:
+	\[
+		L \, \vline_{Lab} = 0.998c T_{proper}/\gamma = 0.998 c \times 15.82 \times 10 ns \approx 47.365 \times 10 \times 10^5 km/s \times 10^{-9}s 
+	\]
+	\[
+		\boxed{\approx 0.047 km \rightarrow L \, \vline_{pion \, lab}}
+	\]
+	Hence pion decays well above the sea level.
+	
+	\section{\color{teal} Question 6 - Proper velocity}
+	
+	The proper velocity is defined as momentum per unit rest mass:
+	\[
+		v_{proper} = \gamma m_0 v/ m_0  = \gamma v = \sqrt{\frac{1}{1-0.6^2}} = \frac{1}{0.8} 0.6 c = 0.75 c 
+	\]
+	Hence the proper velocity is 0.75 c $\hat{x}$
+	
+	\section{W boson decay}
+	
+	The rest mass of W is 80.38 Gev.
+	In the rest frame of W boson the momenta of electron and anti-neutrino are equal in magnitude but opposite in direction, due to linear momentum conservation.
+	Also total Energy needs to be conserved like so:
+	\[
+		M_W = \sqrt{p^2 + M_e^2} + p
+	\]
+	\[
+		\Rightarrow (M_W  -p)^2 = \cancel{p^2} + M_e^2 = M_W^2 +\cancel{p^2}-2pM_W
+	\]
+	\[
+		p = \frac{M_W^2 - M_e^2}{2M_W} = \frac{80.38^2GeV^2 - 0.511^2 MeV^2}{2\times 80.38 GeV} \approx 40.19 \, Gev/c
+	\] 
+	Now for the speed of the emitted electron
+	\[
+		\gamma M_e \, v = p = 40.19 \, GeV/c \Rightarrow \gamma 0.511 \, MeV/c^2 \, v = 40.19 \, GeV/c 
+	\]
+	\[
+		\Rightarrow \frac{\beta}{\sqrt{1-\beta^2}} = 40.19/0.511 \times 10^3 \approx 78649.71 = k \, \, , (say)
+	\]
+	\[
+		\beta_e = \sqrt{\frac{k^2}{1+k^2}} = 0.99999999992
+	\]
+	So the electron is emitted at almost light speed.
+	
+	\section{\color{teal} Question- 8 Pion decay}
+	
+	\textbf{\color{red}INSERT IMAGE HERE}\\
+	
+	Energy of pion : \(E_\pi = \sqrt{p^2_\pi + m^2_\pi}\)\\
+	Energy of muon : \(E_\mu = \sqrt{p_\mu^2 + m^2_\mu}\)\\
+	Energy of anti-neutrino : \(E_\nu = p_\nu \)\\
+	By conservation of linear momentum:\\
+	\[
+		p_\pi = p_\mu cos\theta \, and \,  p_\nu = p_\mu sin\theta
+	\]
+	Hence from conservation of energy,
+	\[
+		\sqrt{p^2_\pi + m^2_\pi} = \sqrt{p_\mu^2 + m^2_\mu} + p_\nu
+	\]
+	Substituting the above linear momentum equations into this one
+	\[
+		\sqrt{p^2_\pi + m^2_\pi} = \sqrt{p_\pi sec^2\theta + m^2_\mu} + p_\pi tan\theta
+	\] 
+	Taking the last term to the left and squaring both sides:
+	\[
+		\Rightarrow \cancel{p_\pi^2} + m^2_\pi + \cancel{p^2_\pi tan^2\theta} -2p_\pi tan\theta\sqrt{p^2_\pi+m^2_\pi} = \cancel{p_\pi sec^2\theta} + m^2_\mu
+	\]
+	\[
+		\Rightarrow \boxed{\frac{m^2_\pi - m^2_\mu}{2p_\pi\sqrt{p^2_\pi+m^2_\pi}}	= tan\theta}
+	\]
+	where given v, \(p_\pi = \frac{m_\pi v}{\sqrt{1-v^2}}\)
+	
+\end{document}
