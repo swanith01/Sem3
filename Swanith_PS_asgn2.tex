@@ -1,0 +1,482 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{amsmath} % for the matrix environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{bbold}
+% Margins
+\topmargin=-0.90in%-0.45%
+\evensidemargin=0in%0in%
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.5in
+\onehalfspacing
+
+\title{Probability \& Statistics - Assignment - 2}
+\author{\textbf{\Large Swanith Upadhye}}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\noindent\hrulefill
+	\Large
+	
+	\section{\color{teal}Question 1 - Estimator for third cumulant}
+	
+	The expression of third central moment in terms of central cumulants
+	\[
+		M_{3c} = \kappa_{3c} - 3\kappa_{2c}\cancel{\kappa_{1c}} + \cancel{\kappa_{1c}^3} \Rightarrow \kappa_{3c} = M_{3c}= \frac{1}{N}\Sigma_1^N (x_i - \bar{x})^3
+	\]
+	Now, E[\ \(\Sigma_1^N(x_i-\bar{x})^3\)], for a guess estimator $\alpha \, \Sigma_1^N(x_i-\bar{x})^3$ for $\kappa_{3c}$:
+	\[
+		E[\Sigma(x_i-\bar{x})^3] = E[\Sigma\{(x_i-\mu)-(\bar{x}-\mu)\}^3] 
+	\]
+	\[
+		= E[\Sigma\{(x_i-\mu)^3 -3(x_i-\mu)^2(\bar{x}-\mu) + 3(x_i-\mu)(\bar{x}-\mu)^2 - (\bar{x}-\mu)^3\}]
+	\]
+	First term:
+	\[
+		NE[(x_i-\mu)^3] = N M_{3c}
+	\]
+	Second term:
+	\[
+		E[\Sigma_i(x_i-\mu)^2 \frac{1}{N}\Sigma_j(x_j-\mu)] = \frac{1}{N}E[\Sigma(x_i - \mu)^3] =M_{3c}
+	\]
+	(Non zero only for i=j)\\
+	Third term:
+	\[
+		E[\Sigma_i(x_i-\mu)\frac{1}{N^2}\Sigma_j(x_i-\mu)\Sigma_k(x_k-\mu)] = \frac{1}{N^2}E[\Sigma_i(x_i-\mu)^3] = \frac{1}{N} M_{3c}
+	\]
+	Final term, similar arguments lead to:
+	\[
+		\frac{N}{N^3}E[\Sigma_i(x_i-\mu)\Sigma_j(x_j-\mu)\Sigma_k(x_k-\mu)] = \frac{1}{N}M_{3c}
+	\]
+	Hence,combining above results:
+	\[
+		E[\Sigma(x_i-\bar{x})^3] = NM_{3c} - 3M_{3c}+\frac{3}{N}M_{3c} - \frac{1}{N}M_{3c} =\frac{(N-1)(N-2)}{N}M_{3c}
+	\]
+	Thus an unbiased estimator of $M_{3c}$
+	\[
+		\boxed{\hat{M_{3c}}\, \vline_{unbiased} = \frac{N^2}{(N-1)(N-2)} \, [\frac{1}{N}\Sigma_{i=1}^N	(x_i - \bar{x})^3]}
+	\]
+	
+	\section{\color{teal}Question-2 Variance of Sample Variance} 
+	 
+	 The $\chi^2$ distribution with k dofs:
+	 \[
+	 	\chi^2 = \frac{1}{\Gamma(k/2)2^{k/2}}x^{k/2-1}exp(-x/2)
+	 \]
+	Its mean:
+	\[
+		<x>_{\chi^2} = \frac{1}{\Gamma(k/2)2^{k/2}}\int_0^\infty x^{k/2} exp(-x/2)dx \rightarrow \int_0^\infty (2y)^{k/2}exp(-y)d(2y) =
+	\]
+	\[	
+		 \frac{\Gamma(k/2 + 1)2^{k/2+1}}{\Gamma(k/2)2^{k/2}} = 2k/2 = k
+	\]
+	The second moment:
+	\[
+		<x^2>_{\chi^2} = \frac{1}{\Gamma(k/2)2^{k/2}}\int_0^\infty x^{k/2+1} exp(-x/2)dx \rightarrow \int_0^\infty (2y)^{k/2+1}exp(-y)d(2y) =
+	\]
+	\[
+		= \frac{\Gamma(k/2 + 2)2^{k/2+2}}{\Gamma(k/2)2^{k/2}} = 4(k/2+1)(k/2) = k(k+2)
+	\]
+	Hence variance:
+	\[
+		\sigma^2_{\chi^2} = \langle x^2\ \rangle - \langle x \rangle^2 = k(k+2) - k^2 =2k
+	\]
+	\subsection{Expectation of Sample Variance and its Variance}
+	
+	 The quantity $\frac{(N-1)s^2}{\sigma^2}$ is distributed like a $\chi^2$ with (N-1) dos:
+	 Hence,
+	\[
+		\boxed{\langle s^2 \rangle = \frac{\sigma^2}{N-1}\{\langle x\rangle_{\chi^2}\rightarrow (N-1)\} = \sigma^2}
+	\]
+	Hence $s^2$ is an unbiased estimator of the population variance.
+	Now as for its variance:
+	\[
+		Var(\frac{(N-1)s^2}{\sigma^2}) = Var(\chi^2_{N-1}) = 2(N-1) \Rightarrow \boxed{Var(s^2) = \frac{\sigma^4}{(N-1)^2}\times 2(N-1) = \frac{2\sigma^4}{N-1}}
+	\]
+	Check:
+	\[
+		\langle (s^2-\sigma^2)^2\rangle = \langle (s^2)^2 -2\sigma^2 s^2 + \sigma+4  \rangle = (Var(s^2)+\cancel{E[s^2]^2) -2\sigma^2E[s^2] + \sigma^4} = Var(s^2)
+	\]
+	\hyperlink{page.8}{\Huge \color{red}Appendix-1}
+	\subsection{Modified sample variance for efficiency}
+	
+	\[
+		\langle \frac{(N+k)s_k^2}{\sigma^2}\rangle = N-1 \Rightarrow \boxed{\langle s_k^2\rangle = \frac{\sigma^2(N-1)}{N+k}}
+ 	\]
+	\[
+		Var(\frac{(N+k)s_k^2}{\sigma^2}) = 2(N-1) \Rightarrow \boxed{Var(s_k^2) = \frac{2(N-1)\sigma^4}{(N+k)^2}}
+	\]
+	Now,
+	\[
+		\boxed{\langle (s_k^2 - \sigma^2)^2 \rangle}  = \langle (s_k^2)^2  - 2\sigma^2 s_k^2 + \sigma^4 \rangle = Var(s_k^2) + E[s_k^2]^2)  - 2\sigma^2 E[s_k^2] + \sigma^4
+	\]
+	\[
+		= \boxed{\frac{2(N-1)\sigma^4}{(N+k)^2} + \frac{\sigma^4(N-1)^2}{(N+k)^2} - 2\frac{\sigma^4(N-1)}{N+k} + \sigma^4}
+	\]
+	For this as a function of k to be extremised:
+	\[
+		-2\frac{(N-1)}{(N+k)^3} - \frac{(N-1)^2}{(N+k)^3} + \frac{N-1}{(N+k)^2} \, \vline_{\, \, k_0} = 0
+	\]
+	\[
+		\Rightarrow \frac{-2-N+1}{N+k} + 1 = 0 \Rightarrow \boxed{ k_{ext} = 1}
+	\](k$>0$)
+	
+	\section{\color{teal} Question 3 - Radioactive decay}
+	
+	\subsection{Maximum Likelihood Estimate and its accuracy}
+	\subsubsection{MLE}
+	
+	The pdf of finding a decay at time t:\(p(t)= \lambda exp(\lambda t)\)
+	Hence the Likelihood of observing a decay each at t1, t2, t3,....tn:
+	\[
+		L(t_1,t_2,..t_n\vline\lambda) = \Pi_i \lambda exp(-\lambda t_i)  =\lambda^n exp(-\lambda(\Sigma_i t_i)) 
+	\]
+	Log Likelihood:
+	\[
+		\mathcal{L} = n\, ln(\lambda) - \lambda\Sigma_i t_i
+	\]
+	To maximize wrt $\lambda$:
+	\[
+		d\mathcal{L}/d\lambda \vline_{\, \lambda_M}= \frac{n}{\lambda_M} - \Sigma_i t_i = 0
+	\]
+	Hence,
+	\[
+		\lambda_M = \frac{n}{\Sigma_i t_i}
+	\]
+	\subsubsection{Accuracy of MLE}
+		
+	The Variance in Maximim Lilelihood measurement:
+	\[
+		\sigma_{MLE}^2 = \frac{-1}{\frac{\partial^2\mathcal{L}}{\partial \lambda^2}} \, \vline_{\,\lambda_M} = -\frac{1}{\frac{-n}{\lambda_M^2}} = \lambda_M^2/n
+	\]
+	\[
+		\Rightarrow \boxed{\sigma_{MLE}^2 = \lambda_M^2/n = \frac{n}{\Sigma_i t_i^2}}
+	\]
+	\hyperlink{page.10}{\Huge \color{red}Appendix-2}
+	
+	\subsection{Bayesian prior}
+	
+	The likelihood now with prior knowledge:
+	\[
+		L(t_1,t_2,..\vline \, \lambda) = \lambda^n exp(-\lambda \Sigma_i t_i) \frac{1}{\sqrt{2\pi \sigma_0^2}} exp(-\frac{(\lambda -\lambda_0)^2}{2\sigma_0^2})
+	\]
+	The log likelihood:
+	\[
+		\mathcal{L} = n\, ln(\lambda) - \lambda \Sigma_i t_i - \frac{(\lambda - \lambda_0)^2}{2\sigma^2}
+	\]
+	Extremising it now:
+	\[
+		\frac{d\mathcal{L}}{d\lambda} \vline _{\, \lambda_M} = 0 = \frac{n}{\lambda_M} - \Sigma_i t_i - \frac{\lambda_M-\lambda_0}{\sigma_0^2}
+	\]
+	This gives, a quadratic in $\lambda_M$
+	\[
+		\boxed{\lambda_M = \frac{\frac{\lambda_0}{\sigma_0^2}- \Sigma t_i \pm \sqrt{((\frac{\lambda_0}{\sigma_0})^2 - \Sigma_i t_i)^2+ \frac{4n}{\sigma_0^2}}}{2/\sigma_0^2}}
+	\]
+	Large $\sigma_0$, weak prior limit:
+	\[
+		\boxed{\lambda_M \vline_{\, \sigma_0 \rightarrow \infty} \approx 0 \, at \, O(1) + \frac{\Sigma_i t_i}{2/\sigma_0^2}\frac{1}{2}\frac{4n}{\sigma_0^2 (\Sigma_i t_i)^2}) \, at \, O(\sigma_0^2) = n/\Sigma_i t_i}
+	\]
+	Small $\sigma_0$, strong prior limit:
+	\[
+		\boxed{\lambda_M \vline_{\, \sigma_0 \rightarrow \infty} \approx \lambda_0 \, at \, O(1)}
+ 	\]
+	
+	\section{\color{teal} Question 4 - T-distribution and Hypothesis Testing}
+	
+	\subsection{To find the distribution of the given t estimator}
+	
+	The sample mean:\(\bar{x} = \frac{1}{N}\Sigma_i x_i\)\\
+	and the sample variance: \(s^2 = \frac{1}{N-1} \Sigma_i (x_i - \bar{x})^2\)\\
+	Hence the statistic: \(t = \frac{\bar{x} - \mu}{\sqrt{s^2}}\)\\
+	The numerator:\\
+	 \( \frac{1}{N} \Sigma_i (x_i - \mu) = \mathcal{N}(0,\sigma^2/N)\) is normally distributed. Lets call it random variable x$_r$\\
+	For the denominator:
+	\(
+		\frac{(N-1) s^2}{\sigma^2} 
+	\) is distributed like a \( \chi^2_{N-1}\)
+	
+	
+	\hyperlink{page.12}{\Huge \color{red}Appendix-3}
+
+	So, The pdf of $s^2$, given some z = $\frac{(N-1) s^2}{\sigma^2}$ :
+	\[
+		p(s^2) = P(z) |\frac{dz}{ds^2}| = P(z(s^2))\frac{N-1}{\sigma^2} = \frac{1}{2^{\frac{N-1}{2}}\Gamma(\frac{N-1}{2})} z^{\frac{N-1}{2}-1} \exp(-\frac{z}{2})\frac{N-1}{\sigma^2}
+	\]
+	\[
+		 P(s^2 = y....(say))= \frac{1}{2^{\frac{N-1}{2}}\Gamma(\frac{N-1}{2})} (\frac{N-1}{\sigma^2})^{\frac{N-1}{2}} y^{\frac{N-1}{2}-1} \exp(-\frac{(N-1)y}{2\sigma^2})
+	\]
+	Now the pdf for $\sqrt{y = s^2} = y_r....(say)$
+	\[
+		P(y_r) = p(y)|\frac{dy}{dy_r}| = p(y(y_r))2y_r = \frac{1}{2^{\frac{N-1}{2}-1}\Gamma(\frac{N-1}{2})} (\frac{N-1}{\sigma^2})^{\frac{N-1}{2}} y_r^{N-2} \exp(-\frac{(N-1)y_r^2}{2\sigma^2})
+	\]
+	Is the Chi distribution.\\
+	Now for the pdf of the t-statistic, from above:
+	\[
+		P(t) = \int dx_r dy_r P(x_r)P(y_r) \delta(t - \frac{x_r}{y_r}) 
+	\]
+	\[
+		= \int dx_r dy_r \frac{1}{\sqrt{2\pi \sigma^2/n}} \exp(-\frac{x_r^2}{2\sigma^2/N})\frac{1}{2^{\frac{N-1}{2}-1}\Gamma(\frac{N-1}{2})} (\frac{N-1}{\sigma^2})^{\frac{N-1}{2}} y_r^{N-2} \exp(-\frac{(N-1)y_r^2}{2\sigma^2})
+	\]
+	\[
+		\times \delta(t- \frac{x_r}{y_r})
+	\]
+	For the $x_r$ integral:
+	Change variable $z = x_r/y_r$ 
+	\[
+		\frac{y_r}{\sqrt{2\pi \sigma^2/N}}\int \, dz exp(-\frac{y_r^2 z^2}{2\sigma^2/N})\delta(t-z) = \frac{y_r}{\sqrt{2\pi \sigma^2/N}} \exp(-\frac{y_r^2t^2}{2\sigma^2/N})
+	\]
+	Putting it back in the P(t) expression:
+	\[
+		P(t) = \int d y_r \frac{1}{\sqrt{2\pi\sigma^2/N}}\frac{1}{2^{\frac{N-1}{2}-1}\Gamma(\frac{N-1}{2})}(\frac{N-1}{\sigma^2})^{\frac{N-1}{2}}\,  y_r^{N-1} \exp(-\{\frac{N-1}{2\sigma^2}+\frac{Nt^2}{2\sigma^2}\}y_r^2)                                   
+	\]
+	Renaming constants:
+	\[
+		= \int dy_r C y_r^{N-1} exp(-Dy_r^2) 
+	\]
+	Changing variables $Dy_r^2 = q$
+	\[
+		\int  \sqrt{\frac{1}{4qD}}\,dq \, C \, (q/D)^{\frac{N-1}{2}}exp(-q) = (C/2) \, D^{-N/2} \int dq \, q^{N/2-1} \, exp(-q) \rightarrow \Gamma(N/2)
+	\]
+	Hence,
+	\[
+		P(t) = \frac{1}{\sqrt{2\pi\sigma^2/N}}\frac{\Gamma(N/2)}{2^{\frac{N-1}{2}}\Gamma(\frac{N-1}{2})}(\frac{N-1}{\sigma^2})^{\frac{N-1}{2}}\{\frac{N-1}{2\sigma^2} + \frac{Nt^2}{2\sigma^2}\}^{-N/2}
+	\]
+	\[
+		\Rightarrow \boxed{P(t) = \frac{\Gamma(N/2)}{\Gamma(\frac{N-1}{2})\sqrt{\pi \frac{N-1}{N}}}\{1 + \frac{t^2}{(N-1)/N}\}^{-N/2}}
+	\]
+	is the Student's t - distribution
+	
+	\subsection{Hypothesis testing on means}
+	
+	Null Hypothesis: Given survey the price of bat is Rs 5000\-\\
+	Alternate Hypothesis: Price of the bat is $>$ Rs 5000\-\\
+	
+	The sample mean: Rs 6000 \-\\
+	The sample standard deviation Rs 900\-\\
+	The standard deviation in the mean: Rs$900/\sqrt{10}$\- $\approx$ Rs 284.60\- \\  
+	Value of the t statistic: t = $\frac{6000-5000}{284.60} \approx$  3.514\\
+	Using mathematica command:\\
+	Quantile[StudentTDistribution[9], 0.90]\\
+	for 9 dofs:\\
+	The 90 \% confidence interval is at ctritical value t$_{9,0.90}$ = 1.383 $<$ $\hat{t}$=3.514 \\
+	 
+	Hence we can reject the null hypothesis that bat costs Rs 5000\- at 10\% confidence. So, at 10 \% confidence the bat costs greater than Rs 5000\-.
+	
+	
+	
+	
+	
+	
+	
+	
+	\pagebreak
+	\section{\color{red} Appendix 1- Question 2}
+	
+	\subsection{$\langle s^2 \rangle$ in brute force}
+	 
+	\[
+		E[\frac{1}{N-1}\Sigma_1^N (x_i - \bar{x})^2] = \frac{1}{N-1}E[\Sigma \{(x_i-\mu)-(\bar{x}-\mu)\}^2]
+	\]
+	\[
+		 = \frac{1}{N-1}E[\Sigma (x_i-\mu)^2 +\Sigma(\bar{x}-\mu)^2 - 2 \Sigma (x_i-\mu)(\bar{x}-\mu)]
+	\]
+	\[
+		= \frac{1}{N-1} [\{\Sigma E[(x_i-\mu)^2] + N \, E[(\bar{x}-\mu)^2] - \frac{2}{N} E[\Sigma_i (x_i-\mu)\Sigma_j( x_j-\mu)] \}]
+	\]
+	\[
+		= \frac{1}{N-1}[N\sigma^2 + 		 \frac{1}{N}E[\Sigma_i(x_i-\mu)\Sigma_j(x_j-\mu)]-\frac{2}{N}E[\Sigma_i(x_i - \mu)^2]]
+	\]
+	(only like terms survive due to iid assumption)
+	\[
+		\frac{1}{N-1} [N\sigma^2 -\sigma^2] = \boxed{\sigma^2 = \langle s^2 \rangle}
+	\]
+	
+	\subsection{$\langle (s^2 -\sigma^2)^2\rangle$ in brute force}
+	Given $x_i$s are Centralised Gaussians:\\
+	Look at $\langle s^4 \rangle$
+	\[
+		\langle s^4 \rangle = \frac{1}{(n-1)^2}\langle \{\Sigma_i(x_i-\bar{x})^2\}^2\rangle 
+	\]
+	\[
+		= \frac{1}{(n-1)^2}\langle \{\Sigma_i(x_i-\bar{x})^2\}\{\Sigma_j(x_j-\bar{x})^2\}\rangle  = \frac{1}{(n-1)^2}\langle \{\Sigma_i(x_i^2)-n\bar{x}^2\}\{\Sigma_j(x_j^2)-n\bar{x}^2\}\rangle
+	\]
+	\[
+		\frac{1}{(n-1)^2}\langle \Sigma_i(x_i^2)\Sigma_j(x_j^2)- 2n\bar{x}^2\Sigma_i x_i^2 + n^2 \bar{x}^4\rangle
+	\]
+	\[
+		= \frac{1}{(n-1)^2}[\langle \Sigma_i\Sigma_j(x_i^2)(x_j^2)\rangle - \langle \frac{2}{n}\Sigma_j\Sigma_k\Sigma_i x_j x_k x_i^2 \rangle + \frac{1}{n^2} \langle \Sigma_i\Sigma_j\Sigma_k\Sigma_k x_ix_jx_kx_l\rangle]
+	\]
+	Since any cumulants of centralised Gausssian above second = 0; any moment higher than second can be written as second cumulant with appropriate combinatoric factor(from moment = sum of cumulant relation with apt combinatoric factor)\\
+	This is called Wicks theorem.\\
+	Hence first term:
+	\[
+		<x_i^2 x_j^2> = <x_i^2><x_j^2> + 2<x_i x_j>^2  
+	\]
+	for $\langle x_i x_j \rangle$ i should be equal to j else it is zero.
+	Hence:
+	\[
+		<x_i^2 x_j^2> = <x_i^2><x_j^2> + 2<x_i x_j>^2 = \sigma^4(1+2\delta_{ij})
+	\]
+	Second term:
+	\[
+		<x_i^2 x_j x_k> = <x_i^2><x_j x_k> + 2<x_i x_j><x_i x_k> = \sigma^4(\delta_{jk} + 2\delta_{ij}\delta_{ik})
+	\]
+	Third term:
+	\[
+		\langle x_ix_jx_kx_l\rangle = <x_ix_j><x_kx_l>+ <x_ix_k><x_jx_l> + <x_ix_l><x_jx_k> 
+	\]
+	\[
+		= \sigma^4(\delta_{ij}\delta_{kl} + \delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk})
+	\]
+	Substituting back into $<s^4>$
+	
+	\[
+		=\frac{\sigma^4}{(n-1)^2}[\Sigma_i\Sigma_j(1+2\delta_{ij}) -  \frac{2}{n}\Sigma_j\Sigma_k\Sigma_i (\delta_{jk} + 2\delta_{ij}\delta_{ik}) + \frac{1}{n^2}  \Sigma_i\Sigma_j\Sigma_k\Sigma_k (\delta_{ij}\delta_{kl} + \delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk})]
+	\]
+	\[
+		= \frac{\sigma^4}{(n-1)^2}[n^2+2n -\frac{2}{n}(n^2+2n) + \frac{1}{n^2}(3n^2)] = \frac{n+1}{n-1}\sigma^4
+	\]
+	Now $<()s^2-\sigma^2)^2>$
+	\[
+		\langle s^4 -2s^2\sigma^2 +\sigma^4\rangle
+	\]
+	\[
+		 = \langle s^4\rangle -2\langle s^2\rangle \sigma^2 + \sigma^4 = <s^4>-\sigma^4 =[\frac{n+1}{n-1}-1]\sigma^4
+	\]
+	\[
+		\Rightarrow \boxed{<(s^2-\sigma^2)^2> =\frac{2}{n-1}\sigma^4 }	
+	\]
+	
+	
+	
+	
+	
+	
+	
+	\pagebreak
+	\section{\color{red} Appendix 2 - Question 3 - Accuracy MLE in exact way}
+	
+		
+	For iid variables $t_i$ from an exponential distribution, the variable $\Sigma_i t_i$ follows a Gamma distribution.\\
+	Lets check.
+	\[
+	MGF(y= \Sigma_i t_i) = \int \Pi_i  dt_i exp(ik(\Sigma_i t_i)) P(t_1, t_2, ...)
+	\]
+	\[	
+	= \Pi_i \int dt_i exp(kt_i) \lambda exp(-\lambda t_i) = \Pi_i \lambda \int_0^\infty dt_i exp(-(\lambda - k)t_i)
+	\] 
+	\[
+	= (\frac{\lambda}{\lambda - k})^n = (1-\frac{k}{\lambda})^{-n} 
+	\]
+	is same as the mgf of a variable z (say) distributed via the Gamma distribution
+	\[
+	p_\gamma(z) = \frac{\lambda^n}{\Gamma(n)} z^{n-1} exp(-\lambda z)
+	\]
+	For y = n/z as required (our MLE, the variance) the pdf of y:
+	\[
+	p_{inv \gamma}(y) = p(z) \vline \frac{dz}{dy} \vline = p(z) (z^2/n) = p(n/y) (n/y^2) = (n/y^2) \frac{\lambda^n}{\Gamma(n)} (n/y)^{n-1} exp(-\lambda \frac{n}{y}) 
+	\]
+	\[
+	\Rightarrow p_{i\gamma }(y) = \frac{(n\lambda)^n}{\Gamma(n)} \frac{1}{y^{n+1}} exp(-\lambda n \frac{1}{y})
+	\]
+	Now its variance, but first:
+	\[
+	\langle y \rangle  = \frac{(n\lambda)^n}{\Gamma(n)} \int_0^\infty y^{-n} \exp(-\frac{n\lambda }{y})dy
+	\]
+	\[
+	= \frac{1}{\Gamma(n)}\int (\frac{n\lambda}{y})^n exp(-\frac{n\lambda}{y}) dy
+	\]
+	Doing a variable change g = n$\lambda$/y:
+	\[
+	= \frac{-n\lambda}{\Gamma(n)}\int g^n exp(-g) dg  =  \frac{\Gamma(n-1)(-n\lambda)}{\Gamma(n)} = - \frac{n}{n-1}\lambda
+	\]
+	And also,
+	\[
+	\langle y^2 \rangle  = \frac{(n\lambda)^n}{\Gamma(n)} \int_0^\infty y^{-(n-1)} exp(-\frac{n\lambda}{y}) dy 
+	\]
+	\[
+	= \frac{n\lambda}{\Gamma(n)}\int (\frac{n\lambda}{y})^{n-1} exp(-\frac{n\lambda}{y}) dy 
+	\]
+	a similar variable change:
+	\[
+	= \frac{-(n\lambda)^2}{\Gamma(n)}\int g^{(n-2-1)}exp(-g)dg = -\frac{(n\lambda)^2}{(n-1)(n-2)}
+	\]
+	Hence finally, Var(y):
+	\[
+	Var(y = \frac{n}{\Sigma_i t_i}) = \langle y^2\rangle - \langle y \rangle^2 =  \frac{-n^2\lambda^2}{(n-1)^2 (n-2)}
+	\]
+	For large n,
+	\[
+	\boxed{\vline Var(\frac{n}{\Sigma_i t_i}) \vline =  \frac{\lambda^2}{(1-1/n)^2 (n-2)}  =^{n\rightarrow\infty} = \frac{\lambda^2}{n}}
+	\]
+	Hence the accuracy becomes better for more number of decays observed (longer times).
+	
+	\pagebreak	
+	\section{\color{red} Appendix 3 - Question 4  - Distribution of sample Variance}
+
+	Lets look at distribution for s$_0^2$ (not sample variance but very much like it):
+	\[
+	s^2/\sigma^2 = \frac{1}{N-1}\Sigma_i \frac{(x_i - \mu)^2}{\sigma^2} \rightarrow y_i^2 \, (say) 
+	\]
+	where $y_i/\sigma$ 's are $\mathcal{N}(0,1)$ distributed:\\
+	So the distribution for $y = \Sigma(x_i-\mu)^2$:
+	\[
+		P((N-1)s^2/\sigma^2=y) = \int \Pi_i \{dy_i/ \frac{1}{\sqrt{2\pi}}exp(-\frac{y_i^2}{2})\}\delta(y - \Sigma y_i^2) 
+	\]
+	\[
+		= \frac{1}{(2\pi)^{N/2}}\int (\Pi_i dy_i/\sigma) exp(-\frac{\Sigma_i y_i^2}{2})\delta(y- \Sigma_i y_i^2)....................{\color{red}(1)}
+	\]
+	Now the differential form:
+	\[
+	\Pi_i dy_i = A_{N} y^{N-1} dy
+	\]
+	where $A_N$ is coefficient of the area of N sphere and y is the radius.\\
+	Lets calculate the area of N sphere:
+	\[
+	\int_{-\infty}^\infty \Pi_i exp(-x_i^2) dx_i = (\sqrt{\pi})^N
+	\]
+	Variable change $\Sigma_i x_i^2 = r^2$
+	\[
+	\int_0^\infty exp(-\Sigma_i x_i^2) A_N r^{N-1} dr = \int exp(-r^2) A_N r^{N-1} dr = \pi^{N/2}
+	\]
+	Variable change $r^2 = t$
+	\[
+	\int_0^\infty exp(-t)A_N t^{(N-1)/2} \frac{dt}{2\sqrt{t}} =\pi^{N/2} = \int exp(-t)t^{N/2 - 1} (A_N/2) dt = (A_N/2)\Gamma(N/2)
+	\]
+	Therefore:
+	\[
+	A_N = \frac{2\pi^{N/2}}{\Gamma(N/2)}
+	\]
+	Volume coefficient of the N sphere:
+	\[
+	V_N  = \frac{1}{R^N} \int_0^\infty A_N r^{N-1} dr = A_N /N = \frac{A_N}{2(N/2)} = \frac{\pi^{N/2}}{\Gamma(N/2 + 1)}
+	\]
+	Lets keep these results aside for later use:\\
+	Now back from line marked (1):
+	\[
+		= \frac{1}{(2\pi)^{(N-1)/2}} \int A_{N-1} (\Sigma_i y_i^2)^{\frac{N-1}{2}} \, \frac{dy}{2\sqrt{y}} \, exp(-\frac{\Sigma_i y_i^2}{2}) \delta(y-\Sigma_i y_i^2) 			
+	\]
+	\[
+		\Rightarrow P((N-1)s_0^2/\sigma^2 = y) = \frac{1}{2(2\pi)^{(N-1)/2}}  A_{N-1} (y)^{\frac{N-1}{2}-1} \, exp(-\frac{y}{2})
+	\]
+	\[
+		\boxed{P((N-1)s^2/\sigma_0)= \frac{1}{2^{(N-1)/2}\Gamma((N-1)/2)}y^{(N-1)/2-1} exp(-y/2) = \chi^2_{N-1}}
+	\]
+	This will give us insight to look for the distribution for s$^2$:
+	
+	
+	
+\end{document}
