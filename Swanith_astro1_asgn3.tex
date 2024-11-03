@@ -1,0 +1,361 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{amsmath} % for the matrix environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{bbold}
+% Margins
+\topmargin=-0.90in%-0.45%
+\evensidemargin=0in%0in%
+\oddsidemargin=0in
+\textwidth=7in
+\textheight=10.0in
+\headsep=0.5in
+\onehalfspacing
+
+\title{Astronomy \& Astrophysics Assignment - 3}
+\author{\textbf{\Large Swanith Upadhye}}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	\noindent\hrulefill
+	\Large
+	
+	\section{\color{teal} Question 1}
+	
+	The Pressure hydrostatic equilibrium equation:
+	\[
+		dP = -\rho g dr
+	\]
+	Multiply and divide by mass absormption coefficient on right side:
+	\[
+		dP = (-\rho \kappa_\nu dr) \, \frac{g}{\kappa_\nu} 
+	\]
+	The optical depth \(d\tau_\nu  = \rho \kappa_\nu dr\); Hence:
+	\[
+		\boxed{\frac{dP}{d\tau_\nu} = - \frac{g}{\kappa_\nu}}
+	\]
+	
+	\section{\color{teal}Question - 2}
+	
+	\subsection{Pressure vs radius profile}
+	
+	The Hydrostatic Equilibrium Pressure equation :
+	\[
+		\frac{dP}{dr} = -\frac{GM(r)\rho}{r^2} = \frac{4G\pi\rho^2}{3}r
+	\]
+	Since $\rho$ is given a constant,\\
+	Now integrating:
+	\[
+		P(r) = -\frac{2G\pi\rho^2}{3}r^2 + c
+	\]
+	Given P(R) = 0
+	\[
+		\Rightarrow c = \frac{2G\pi\rho^2}{3}R^2
+	\]
+	Hence,
+	\[
+		\boxed{P(r) = \frac{2G\pi\rho^2}{3}(R^2-r^2)}
+	\]
+	\subsection{Temperature profile vs r}
+	
+	Given the star is made up of ideal gas:
+	\[
+		P = \frac{\rho kT}{\mu m_H} \Rightarrow T = \frac{\mu m_H}{\rho k}P(r) 
+	\]
+	\[
+		\Rightarrow \boxed{T(r) = \frac{2G\pi\rho\mu m_H}{3k}(R^2-r^2)}
+	\]
+	\subsection{Nuclear Energy Production rate vs r}
+	
+	Given \(\epsilon \, \alpha \, T^4 \rightarrow (R^2 - r^2)^4\)
+	
+	\[
+		\frac{d\epsilon}{\epsilon} = \frac{4(R^2-r^2)^3 (-2r)}{(r^2-r^2)^4} = \frac{4(-2r)}{R^2-r^2}dr
+	\]
+	Integrating both sides:
+	\[
+		\ln(\epsilon/\epsilon_0) = 4\ln(\frac{R^2-r^2}{R^2})
+	\]
+	where $\epsilon_0$ is Nuclear energy production rate at stellar center.\\
+	Given$\epsilon/\epsilon_0 = 0.1$,
+	\[
+		\frac{1}{4}\ln(0.1) = \ln(1-r^2/R^2) = \ln(0.1^{1/4})
+	\]
+	Comparing arguments within the log:
+	\[
+		\Rightarrow r = R\sqrt{1-0.1^{1/4}}
+	\]
+	Volume fraction for this radius:
+	\[
+		\boxed{V(r)/V(R) = (1-0.1^{1/4})^{3/2} \approx 0.29 =29 \%}
+	\]
+	
+	\section{\color{teal} Question 3}
+	
+	\subsection{M vs r}
+	
+	From the Mass density relation:
+	\[
+		dM = 4\pi \, \rho(r)\,  r^2 dr
+	\]
+	For the Given density profile
+	\[
+		dM =4\pi\rho_c(r^2 - r^3/R)dr
+	\]
+	Integrating on both sides:
+	\[
+		\boxed{M(r) = 4\pi\rho_c (\frac{r^3}{3} -\frac{r^4}{4R})}
+	\]
+	\subsection{Total Mass of the star}
+	
+	For r=R, in the above relation
+	\[
+		\boxed{M = \frac{\pi\rho_cR^3}{3}}
+	\]
+	\subsection{Hydrostatic Equilibrium Pressure Profile}
+	
+	The Hydrostatic Equilibrium pressure equation:
+	\[
+		\frac{dP}{dr}  = -\frac{GM(r)\rho_(r)}{r^2}
+	\]
+	Substituting above M(r) and $\rho(r)$:
+	\[
+		\frac{dP}{dr} = -4\pi G \rho_c^2 (\frac{r}{3} - \frac{r^2}{4R})(1-\frac{r}{R}) \rightarrow (\frac{r}{3} -\frac{7r^2}{12R} + \frac{r^3}{4R^2})
+	\]
+	Integrating both sides
+	\[
+		\cancel{P(R)} + \boxed{P(r) = 4\pi G \rho_c^2 \{\frac{R^2-r^2}{6} - \frac{7}{36R}(R^3-r^3) + \frac{1}{16R^2}(R^4-r^4)\}}
+	\]
+	
+	\section{\color{teal}Question - 4}
+	
+	\subsection{Mean molecular mass}
+	The mean particle mass for Completely ionised $^{12}C$ is: 
+	\[
+		\mu = \frac{ A_C n_C}{n_C(1+z_C)} = \frac{12\times 1}{ 1+6} = \boxed{12/7 m_H=\bar{m} }	
+	\]
+	
+	\subsection{Scaling relations}
+	
+	The average Kinetic Energy of stellar components:
+	\[
+		E_T = \frac{3MKT}{2\bar{m}} 
+	\]
+	The average Gravitational potential energy of the stellar components:
+	\[
+		E_G = GM^2/R
+	\]
+	From Virial theorem:
+	\[
+		2E_T = E_G \Rightarrow R = \frac{G\bar{m}M}{3KT}
+	\]
+	Radius relates to the T,M and $\bar{m}$ as:
+	\[
+		\boxed{R \, \alpha \, \frac{\bar{m}M}{T}}
+	\]
+	In comparison to Sun's parameters:
+	\[
+		\frac{R}{R_\odot} = \frac{\bar{m}M/T}{\bar{m_\odot}M_\odot/T_\odot} \approx \frac{1.714 \times 10}{0.62 \times 40} \boxed{\approx 0.691 = R/R_\odot}
+	\]
+	\subsection{Surface temperature}
+	\[
+		T = [\frac{L}{4\pi R^2 \sigma}]^{1/4}
+	\]
+	With respect to the Sun's surface Temperature:
+	\[
+		\frac{T}{T_\odot} = [\frac{L/L_\odot}{(R/R_\odot)^2}]^{1/4} \approx [10^7/0.691^2]^{1/4} \boxed{\approx 67.64 = \frac{T}{T_\odot}}
+	\]
+	\subsection{The fraction of mass converted to energy}
+	
+	The mass defect thats converted to energy = 2$\times$12 - 23.985 = 0.015 au =$\triangle m$\\
+	Hence the fraction of mass converted to energy = 0.015/24 = \boxed{0.0625\%}
+	
+	\subsection{Time taken by star to use up 10\% of its Carbon}
+	
+	10\% of the mass of the star= M$_{10\%}$ = \(2\times 10^{30}\) kg\\
+	is the required mass of the Carbon used.\\
+	The Energy of fusion of two $^12C$ atoms = E$_f$ = \( \triangle m c^2 = 0.015 \times 1.66 \times 10^{-24} \, g\, \times 9 \times 10^{20} \, (cm/s)^2 = 2.241 \times 10^{-5} \, ergs \)\\
+	Now number of reactions required:
+	\[
+		N = \frac{1}{2} \frac{M_{10\%}}{A_C \, amu} = \frac{1}{2}\, \frac{2\times10^{30}}{12 \times 1.66\times 10^{-27}} = 5.02 \times 10^{55}
+	\]
+	where, factor of 1/2 is because two atoms are used up for a single fusion.\\
+	Now the Energy released for the 10\% stellar mass:
+	\[
+		E = N \times E_f = 5.02\times 10^{55} \times 2.241 \times 10^{-5} \,ergs  = 1.125 \times 10^{51} ergs
+	\]
+	Now the Rate at which the M$_{10\%}$ is used:
+	\[
+		T = \frac{E}{L} = \frac{E}{10^7 L_\odot} = \frac{1.125 \times 10^{51}}{3.828 \times 10^{40}} \approx 2.94 \times 10^{10} s \approx \boxed{932.27 \, yrs \approx T_{10\%}}
+	\]
+	
+	\section{\color{teal} Question 5 - Convective Transport}
+	
+	\subsection{Conditition}
+	\begin{figure}[h]
+		\centering\includegraphics[scale=0.51]{Convection.png}
+		\caption{The thermodynamic parameters for and around a blob of stellar matter out of equilibrium (Reference: StellarAstrophysics-Lecture10-notes -Prof. Manoj Purvankara -TIFRM)} 
+		\label{fig:figure1}
+	\end{figure}
+	
+	From the above figure, a small parcel of stellar matter experiencing local fluctuations pushes it out of hydrostatic equilibrium.\\
+	The gas parcel pushed up undergoes a adiabatic change in volume, since the blobs response is faster than impulse from surrounding(which happen at sound speeds).\\ 
+	
+	The adiabatic process: PV$^\gamma$ =const $\Rightarrow$ $P \, \propto \rho^\gamma$\\
+	
+	Taking log and derivative on both sides:
+	\[
+		\frac{\delta P}{P} = \gamma \frac{\delta\rho}{\rho}.........(5.11)
+	\]
+	For convection to set in, the density of blob should be smaller than its surrounding:
+	\[
+		 \delta\rho < d\rho \rightarrow \frac{\delta\rho}{\rho}<\frac{d\rho}{\rho} 
+	\]
+	for any positive $\rho$.
+	Plugging in equation (5.11) in the above relation:
+	\[
+		\frac{1}{\gamma}\frac{\delta P}{P} < \frac{d\rho}{\rho}............(5.12)
+	\]
+	Now for the surrounding ideal gas:\(P \propto \rho T\)\\
+	Taking similar log derivative on both sides:
+	\[
+		\frac{dP}{P} = \frac{d\rho}{\rho}+\frac{dT}{T} \Rightarrow \frac{d\rho}{\rho} = \frac{dP}{P} - \frac{dT}{T}
+	\]
+	Plugging this back into relation (5.12)
+	\[
+		\frac{1}{\gamma}\frac{\delta P}{P}<\frac{dP}{P} - \frac{dT}{T} \Rightarrow \frac{dT}{T}<\frac{dP}{P}-\frac{1}{\gamma}\frac{\delta P}{P} \Rightarrow \boxed{|\frac{dT}{T}| \gtrsim |\frac{dP}{P}|(1-\frac{1}{\gamma})}
+	\]
+	In the last line we let \(dP\approx\delta P\) and since \(dT \& dP\) are both negative (dP(r+dr)-dP $<$ 0, same for T) taking the modulus reverses the inequality sign(multiplying by -1 on both sides).\\
+	
+	Replacing the small quantities dT and dP as respective derivatives wrt r:
+	\[
+		\frac{dT}{dr} > \frac{T}{P}\frac{dP}{dr}(1-\frac{1}{\gamma})
+	\]
+	Now on the right hand side substituting the hydrostatic pressure condition:
+	\[
+		\frac{dT}{dr}> \frac{T}{P}\frac{GM\rho}{r^2}(\frac{1}{\gamma}-1)
+	\]
+	where the minus sign was absorbed into the $\gamma$bracket.\\
+	Now using the ideal gas law:\(P = \frac{\rho k_BT}{\mu m_H}\), we get the required:
+	\[
+		\boxed{\frac{dT}{dr} > \frac{GM\mu m_H}{k_B r^2}(\frac{1}{\gamma} - 1)}
+	\]
+	
+	\subsection{Schwarzschild Condition}
+	
+	If the temperature gradient set in by radiative transfer is greater than the minimum possible temperature gradient required for convections, then stable convection ensues:
+	\[
+		|\frac{dT}{dr}|\, \vline_{\, radiative} > |\frac{dT}{dr}|\, \vline_{\, convective-minimum}
+	\]
+	Hence, from radiative transfer equation:
+	\[
+		\frac{3\kappa(r)L(r)\rho(r)}{16\pi r^2acT^3(r)}>\frac{GM\mu m_H}{k_B r^2}(\frac{1}{\gamma} - 1)
+	\]
+	Hence:
+	\[
+		L > \{\frac{Gm_H}{k_B}\frac{16\pi4\sigma}{3}(\frac{1}{\gamma}-1)\}\frac{\mu T^3M}{\kappa\rho}
+	\]
+	
+	Putting the values (monoatomic gas $\gamma$ = 5/3, a=4$\sigma$/c above)
+	\[
+		L > \frac{6.67\times10^{-8} 1.67\times 10^{-24}}{1.38\times 10^{-16}}\frac{64\pi5.67\times10^{-5}}{3}(-2/5)\frac{\mu T^3M}{\kappa\rho}
+	\]
+	Due to the minus sign the inequality flips:
+	\[
+		\boxed{L<1.22 \times 10^{-18} \frac{\mu T^3M}{\kappa\rho}}
+	\]
+	
+	\section{\color{teal} Question 7- Solar Convection Zone}
+
+	In the small convective zone mass approximation M(r) = M$\odot$ is a constant.\\
+	From the final boxed result of equation of section (5.1) in this manuscript(convection temperature gradient relation and ideal gas law):
+	\[
+		\frac{dT}{dr} = \frac{GM_\odot\mu m_H(\frac{1}{\gamma}-1)}{k_B} \frac{1}{r^2} = C_{say} /r^2
+	\]
+	Hence, intergrating b.s. wrt r:
+	\[
+		\boxed{T(r) - T_s = C (1/r - 1/R_\odot)}
+	\]
+	where $T_s$ stands for surface temperature.\\
+	From the Hydrostatic pressure equilibrium relation:
+	\[
+		\frac{dP}{dr} = \frac{-GM_\odot \rho(r)}{r^2} = -\frac{G M_\odot}{r^2} \frac{P\mu m_H}{RT}
+	\]
+	\[
+		\Rightarrow \frac{dP}{P} = - \frac{G\mu m_H}{R}\frac{1}{r^2}\frac{1}{T_s + C(1/r - 1/R_\odot)}dr  =-D1_{say}\frac{1}{(T_s-1/R_\odot)r^2 +Cr}dr 
+	\]
+	\[
+		= -D_1\frac{dr}{D2_{say}r^2+Cr} = -\frac{D_1}{D_2}\frac{dr}{(r + C/2D_2)^2-C^2/4D_2^2}
+	\]
+	Integrating both sides:
+	\[
+		\boxed{ln(P/P_s) = \frac{-D_1}{C}\ln|\frac{r(R_\odot+C/D_2)}{(r+C/D_2)R_\odot}|}
+	\]
+	where we used:
+	\(
+	 	\int \frac{1}{x^2-a^2} = \frac{1}{2a}ln|\frac{x-a}{x+a}|
+	\)\\
+	Now the density, from ideal gas law:
+	\[
+		\rho(r)  = \frac{P(r)\mu m_H}{RT(r)} = \boxed{P(s)exp(-\frac{-D_1}{C}\ln|\frac{r(R_\odot+C/D_2)}{(r+C/D_2)R_\odot}|)\frac{\mu m_H}{R[T_s + C(1/r-1/R_\odot)]}=\rho(r)}
+	\]
+	
+	\section{\color{teal}Question 8 - Gamow integral}
+	
+	\subsection{Extrema of Transition Probability factor}
+	
+	Given:
+	\[
+		f(E) = \exp(-E/k_BT)\exp(-\sqrt{E_G/E})
+	\]
+	Differentiating with respect to E:
+	\[
+		f'(E)\, \vline_{\, E_0 = 0} = \exp(-E/k_BT)\exp(-\sqrt{E_G/E})[-\frac{1}{k_BT} +\frac{1}{2}\frac{\sqrt{E_G}}{E^{3/2}}] \, \vline_{E_0=0}
+	\]
+	\[
+		\boxed{E_0 = (\frac{k_BT}{2})^{2/3}E_G^{1/3}}
+	\]
+	\subsection{Finding the width in Gaussian approximation}
+	
+	Upon Taylor expanding the exponent in \(\exp(-(E/k_BT + \sqrt{E_G/E}))\)
+	\[
+		f(E) = -(E/k_BT + \sqrt{E_G/E}) = -f(E_0) - (E-E_0)\cancel{f'(E_0)} - \frac{1}{2}(E-E_0)^2 f''(E_0) + O((E-E_0)^3)
+	\]
+	Comparing to a Gaussian: its exponent : \(\frac{-1}{2\triangle^2}(E-E_0)^2\)
+	\[
+		\triangle^2 = \frac{1}{f''(E_0)}
+	\]
+	Now f''(E$_0$):
+	\[
+		f''(E) \, \vline_{E_0} = [0 + \frac{3}{4}\sqrt{E_G}E^{-5/2}]\, \vline{\, E_0}
+	\]
+	\[
+		 = \frac{3}{4}E_G^{1/2} (\frac{k_BT}{2})^{2/3 \times -5/2} E_G^{1/3 \times -5/2} = \frac{-3}{4}E_G^{-1/3}(\frac{k_BT}{2})^{-5/3}
+	\]
+	\[
+		\Rightarrow \triangle = \sqrt{1/f''(E_0)} =\{\frac{3}{4}E_G^{-1/3}(\frac{k_BT}{2})^{-5/3}\}^{-1/2} = \frac{3^{-1/2}}{2^{(-2+5/3)/2}}E_G^{1/6}(k_BT)^{5/6}
+	\]
+	\[
+		= \boxed{\triangle = \frac{2^{1/6}}{3^{1/2}}E_G^{1/6}(k_BT)^{5/6}}
+	\]
+	
+	\subsection{Gaussian Approximation Area}
+	
+	Area:
+	\[
+		\int_{0}^{\infty} f(E_0) exp(-\frac{1}{2\triangle^2}(E-E_0)^2) dE = f(E_0)\frac{\sqrt{\pi}}{\sqrt{\frac{1}{2\triangle^2}}} = \boxed{f(E_0)\sqrt{2\pi}\triangle = Area}
+	\]
+	since E$_0$>0 limits$\infty\rightarrow\infty \approxeq 0\rightarrow \infty$ 
+	
+	
+\end{document}
