@@ -272,8 +272,15 @@
 	\]
 	Due to the minus sign the inequality flips:
 	\[
-		\boxed{L<1.22 \times 10^{-18} \frac{\mu T^3M}{\kappa\rho}}
+		\boxed{L<1.22 \times 10^{-18} \,\, \frac{\mu T^3M}{\kappa\rho}}
 	\]
+	
+	\subsection{Kramers Law Insights}
+	
+	From The Radiative Temperature gradient relation, we see as $\rho$ increases, the temperature gradient increases as it is in the numerator.\\
+	After a critical density the condition\(\frac{dT}{dr}\, \vline_{radiation}>\frac{dT}{dr} \, \vline_{convection}\) will be satisfied and convection starts.\\
+	
+	Since the opacity increases it becomes more difficult for the radiation to escape and carry the energy with it. To maintain equilibrium after above critical condition convection commences. 
 	
 	\section{\color{teal} Question 7- Solar Convection Zone}
 
@@ -356,6 +363,92 @@
 		\int_{0}^{\infty} f(E_0) exp(-\frac{1}{2\triangle^2}(E-E_0)^2) dE = f(E_0)\frac{\sqrt{\pi}}{\sqrt{\frac{1}{2\triangle^2}}} = \boxed{f(E_0)\sqrt{2\pi}\triangle = Area}
 	\]
 	since E$_0$>0 limits$\infty\rightarrow\infty \approxeq 0\rightarrow \infty$ 
+	
+	\section{\color{teal} Question 9 - Solar Wind Mass Loss}
+
+	The Continuity equation for mass loss:
+	\[
+		\frac{d\rho}{dt} + \nabla.\bar{J} = 0
+	\]
+	The mass current:
+	\[
+		\bar{J} = \rho \bar{v} 
+	\]
+	Integrating the continuity equation wrt volume:
+	\[
+		\int \frac{d\rho}{dt}dV + \int \nabla \rho \bar{v} dV
+	\]
+	Now  \(\rho dV = dM \) and applying Gauss Law in the second term :
+	\[
+		\frac{\partial}{\partial t} \int dM + \oint_{\partial V} \rho \bar{v}.\hat{n} dS 
+	\]
+	Since on an average all the integrands are constant
+	\[
+		-\frac{\partial}{\partial t} \triangle M = \rho \bar{v}.\hat{n} S
+	\]
+	where S is the area of sphere, with radius as big as Earth-Sun distance 1 AU\\
+	Integrating to the current age of sun T:
+	\[
+		-\triangle M(T)+\cancel{\triangle M(0)} = \rho \bar{v}.\hat{n} S T
+	\]
+	Hence:
+	\[
+		|\triangle M(T)| = (10 \times 1.66 \times 20^{-24} g/cm^3) \times (400 \times 10^5 cm/s) \times (4\pi \{150 \times 10^6 10^5 cm\}^2)
+	\]
+	\[
+		 \times \{4.5 \times 10^9 \times 365 \times 24 \times 3600 s\}
+	\]
+	where we used on an average $\bar{v}$ is a constant so $\bar{v}.\hat{n} = |\bar{v}| = 400 km/s$ given.\\
+	
+	\[
+		|\triangle M(T)| \approx 2.66 \times 10^{29} g
+	\]
+	For solar mass 1.99 $\times$ 10$^{33}$ g:
+	\[
+		\boxed{\triangle M(T) \approx 0.0134 \%}	
+	\]
+	
+	\section{\color{teal} Question 10 - Scaling Relations}
+	
+	\subsection{Main sequence lifetimes}
+	
+	The Mass-Luminosity relation for:
+	\begin{itemize}
+		\item Low mass star: L $\propto M^5 $
+		\item Intermediate star(like Sun): L $\propto M^3$
+		\item Massive Star: L $\propto$ M 
+	\end{itemize}
+	
+	The main sequence life time $T_ms$ is directly proportion al to the mass of the star(amount of nuclear fuel) and inversely related to Luminosity(rate of that energy production) 
+	
+	The corresponding lifetimes:
+	
+	\begin{itemize}
+		\item Low mass star :$T_ms \propto M/M^5 \rightarrow M^{-4}$
+		\item Intermediate Mass Star : $T_ms \propto M/M^3 \rightarrow M^{-2}$
+		\item Heavy Star : $\boxed{T_ms \propto M/M \rightarrow M^0}$.....(Q10 - part(iii))
+	\end{itemize}
+	
+	Now for the question:
+	\begin{itemize}
+		\item Low Mass M = 0.5 M$_\odot$\\ : $\boxed{T_ms = T_\odot (M/M_\odot)^{-4} = T_\odot (0.5)^{-4} = 1.6 \times 10^{11} years > t_{universe}}$\\
+		$t_{universe}  = $13.8 billion years $< T_ms$ above = 160 billion years)
+		
+		\item Massive Star (M = 10 M$\odot$ T): Can not be estimated in this way since $T_{ms} \propto M^0$ but is expected to be less than T$_\odot$
+		 
+	\end{itemize}
+	
+	\subsection{Sun swells}
+	
+	Using Stefan Boltzmann Law:
+	\[
+		L \propto R^2 T^4
+	\]
+	Given R = 200 $R_\odot$, T = $\frac{1}{2}T_\odot$
+	\[
+		L = L_\odot 200^2 \frac{1}{2^4} = 2500 L_\odot
+	\]
+	
 	
 	
 \end{document}
